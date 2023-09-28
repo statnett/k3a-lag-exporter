@@ -7,7 +7,6 @@
     <groupId>no.statnett</groupId>
     <artifactId>k3a-lag-exporter</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
 
     <dependencies>
         <dependency>
@@ -72,9 +71,11 @@
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.6.0</version>
                 <configuration>
-                    <descriptors>
-                        <descriptor>assembly.xml</descriptor>
-                    </descriptors>
+                    <finalName>${project.artifactId}</finalName>
+                    <appendAssemblyId>false</appendAssemblyId>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                     <archive>
                         <manifest>
                             <mainClass>no.statnett.k3alagexporter.K3aLagExporter</mainClass>
@@ -93,5 +94,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
