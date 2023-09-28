@@ -1,0 +1,14 @@
+---
+name: Delete Obsolete GHCR Images
+on:
+  schedule:
+    - cron: "0 1 * * *"  # every day at midnight
+  workflow_dispatch:
+
+jobs:
+  trigger:
+    uses: statnett/workflows/.github/workflows/clean-ghcr.yaml@main
+    with:
+      image-names: ${{ github.repository }}
+    permissions:
+      packages: write
