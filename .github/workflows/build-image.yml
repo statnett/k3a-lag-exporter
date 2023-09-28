@@ -5,8 +5,11 @@ on:
     inputs:
       push:
         type: boolean
-        default: true
+        default: false
 
+env:
+  REGISTRY: ghcr.io
+  IMAGE_NAME: ${{ github.repository }}
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -20,8 +23,30 @@ jobs:
       - run: mvn --batch-mode --update-snapshots verify
       - uses: docker/setup-qemu-action@v2
       - uses: docker/setup-buildx-action@v2
+      - uses: docker/metadata-action@v4
+        id: meta
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            # output 0.1.2
+            type=semver,pattern={{version}}
+            # output 0.1
+            type=semver,pattern={{major}}.{{minor}}
+            # disabled if major zero
+            type=semver,pattern={{major}},enable=${{ !startsWith(github.ref, 'refs/tags/v0.') }}
+            type=ref,event=branch
+            type=ref,event=pr
+      - uses: docker/login-action@v2
+        if: ${{ inputs.push }}
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       - uses: docker/build-push-action@v4
         with:
           context: .
+          push: ${{ inputs.push }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=gha
           cache-to: type=gha,mode=max

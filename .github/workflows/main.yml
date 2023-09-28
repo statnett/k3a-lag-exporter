@@ -1,0 +1,13 @@
+---
+name: Main
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-push-image:
+    if: ${{ github.repository == 'statnett/k3a-lag-exporter' }}
+    uses: ./.github/workflows/build-image.yml
+    with:
+      push: true
