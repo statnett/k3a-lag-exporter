@@ -1,4 +1,4 @@
-FROM eclipse-temurin:11-alpine
+FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
 COPY target/k3a-lag-exporter.jar ./
 
