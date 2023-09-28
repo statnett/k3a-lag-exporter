@@ -1,2 +1,8 @@
 # k3a-lag-exporter
-Simple lag metrics exporter for Kafka clusters
+
+**WARNING!**
+
+This is experimental work in very early stages.
+
+* Almost no tests
+* Not at all robust, will terminate from the slightest failure
