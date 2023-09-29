@@ -7,6 +7,7 @@ import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.ByteArrayDeserializer;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -15,11 +16,12 @@ import java.util.Map;
 
 public final class Conf {
 
-    private static final Config CONF = ConfigFactory.load();
+    private static final Config DEFAULT_CONFIG = ConfigFactory.parseResources("reference.conf");
+    private static Config conf = ConfigFactory.load();
     private static final String MAIN_OBJECT_NAME = "kafka-lag-exporter";
 
     public static int getPrometheusPort() {
-        return CONF.getInt(MAIN_OBJECT_NAME + ".reporters.prometheus.port");
+        return conf.getInt(MAIN_OBJECT_NAME + ".reporters.prometheus.port");
     }
 
     public static String getClusterName() {
@@ -45,7 +47,7 @@ public final class Conf {
     }
 
     public static long getPollIntervalMs() {
-        return CONF.getDuration(MAIN_OBJECT_NAME + ".poll-interval").toMillis();
+        return conf.getDuration(MAIN_OBJECT_NAME + ".poll-interval").toMillis();
     }
 
     public static Collection<String> getConsumerGroupDenyList() {
@@ -81,11 +83,15 @@ public final class Conf {
     }
 
     private static Config getCluster() {
-        final List<? extends Config> list = CONF.getConfigList(MAIN_OBJECT_NAME + ".clusters");
+        final List<? extends Config> list = conf.getConfigList(MAIN_OBJECT_NAME + ".clusters");
         if (list == null || list.size() != 1) {
             throw new RuntimeException("Exactly one cluster must be given.");
         }
         return list.get(0);
+    }
+
+    public static void setFromFile(final String configFile) {
+        conf = ConfigFactory.parseFile(new File(configFile)).withFallback(DEFAULT_CONFIG).resolve();
     }
 
 }

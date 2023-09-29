@@ -32,6 +32,12 @@ public final class K3aLagExporter {
         if (args.length != 0) {
             showHelpAndExit();
         }
+        final String configFile = System.getProperty("config.file");
+        if (configFile == null) {
+            System.err.println("You need to specify a config.file property.");
+            System.exit(1);
+        }
+        Conf.setFromFile(configFile);
         new K3aLagExporter().doit();
     }
 
