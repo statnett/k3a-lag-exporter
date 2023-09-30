@@ -7,8 +7,9 @@ import org.slf4j.LoggerFactory;
 public final class K3aLagExporter {
 
     private static final Logger LOG = LoggerFactory.getLogger(K3aLagExporter.class);
+    private boolean shouldStop = false;
 
-    private void doit() {
+    private void start() {
         try {
             final long msBetweenCollections = Conf.getPollIntervalMs();
             final PrometheusReporter prometheusReporter = new PrometheusReporter();
@@ -31,6 +32,11 @@ public final class K3aLagExporter {
         }
     }
 
+    /* For testing */
+    public void stop() {
+        shouldStop = true;
+    }
+
     private static void showHelpAndExit() {
         System.out.println("For configuration and usage of k3a-lag-exporter, please see");
         System.out.println("https://github.com/statnett/k3a-lag-exporter");
@@ -47,7 +53,7 @@ public final class K3aLagExporter {
             System.exit(1);
         }
         Conf.setFromFile(configFile);
-        new K3aLagExporter().doit();
+        new K3aLagExporter().start();
     }
 
 }
