@@ -15,30 +15,7 @@ import java.util.Map;
  */
 public final class MetricsParser {
 
-    public static final class Metric {
-
-        private final String name;
-        private final double value;
-        private final Map<String, String> labels;
-
-        public Metric(final String name, final double value, final Map<String, String> labels) {
-            this.name = name;
-            this.value = value;
-            this.labels = labels;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public double getValue() {
-            return value;
-        }
-
-        public Map<String, String> getLabels() {
-            return labels;
-        }
-
+    public record Metric(String name, double value, Map<String, String> labels) {
     }
 
     public List<Metric> getMetrics(final String metricsContents) {

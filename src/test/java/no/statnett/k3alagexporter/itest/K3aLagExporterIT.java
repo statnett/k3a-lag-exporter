@@ -76,7 +76,7 @@ public final class K3aLagExporterIT {
         final List<MetricsParser.Metric> metrics = lagExporter.getMetrics();
         MetricsParser.Metric metric = null;
         for (final MetricsParser.Metric m : metrics) {
-            if ("k3a_consumergroup_group_lag".equals(m.getName()) && TOPIC.equals(m.getLabels().get("topic"))) {
+            if ("k3a_consumergroup_group_lag".equals(m.name()) && TOPIC.equals(m.labels().get("topic"))) {
                 metric = m;
                 break;
             }
@@ -84,7 +84,7 @@ public final class K3aLagExporterIT {
         if (metric == null) {
             throw new RuntimeException("Did not find the metric");
         }
-        Assert.assertEquals(expected, metric.getValue(), 0.00001);
+        Assert.assertEquals(expected, metric.value(), 0.00001);
     }
 
     private Producer<Integer, Integer> getProducer() {
