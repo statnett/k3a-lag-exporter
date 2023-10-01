@@ -9,6 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Parses Prometheus metrics. Note that this is not a complete implementation,
+ * just enough to run the integration tests in this project.
+ */
 public final class MetricsParser {
 
     public static final class Metric {
