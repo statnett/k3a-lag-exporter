@@ -10,7 +10,7 @@ import java.io.IOException;
 
 public final class PrometheusReporter {
 
-    public static final String PROMETHEUS_PREFIX = "k3a_";
+    public static final String PROMETHEUS_PREFIX = Conf.getPrometheusMetricPrefix();
     private final Gauge consumerGroupLagGauge = Gauge.builder()
         .name(PROMETHEUS_PREFIX + "consumergroup_group_lag")
         .labelNames("cluster_name", "group", "topic", "partition" /*, "member_host", "consumer_id", "client_id" */)
