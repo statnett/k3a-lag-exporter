@@ -20,14 +20,14 @@ public final class ConfTest {
 
     @Test
     public void shouldFindConsumerProperties() {
-        final Map<String, Object> map = Conf.getConsumerConfigs();
+        final Map<String, Object> map = Conf.getConsumerConfig();
         Assert.assertNotNull(map);
         Assert.assertEquals("SSL", map.get("security.protocol"));
     }
 
     @Test
     public void shouldFindAdminProperties() {
-        final Map<String, Object> map = Conf.getAdminConfigs();
+        final Map<String, Object> map = Conf.getAdminConfig();
         Assert.assertNotNull(map);
         Assert.assertEquals("password", map.get("ssl.keystore.password"));
     }
