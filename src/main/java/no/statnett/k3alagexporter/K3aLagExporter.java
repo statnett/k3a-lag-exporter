@@ -9,7 +9,7 @@ public final class K3aLagExporter {
     private static final Logger LOG = LoggerFactory.getLogger(K3aLagExporter.class);
     private boolean shouldStop = false;
 
-    private void start() {
+    public void start() {
         try {
             final long msBetweenCollections = Conf.getPollIntervalMs();
             final PrometheusReporter prometheusReporter = new PrometheusReporter();
