@@ -6,12 +6,15 @@ import no.statnett.k3alagexporter.itest.services.KafkaCluster;
 import no.statnett.k3alagexporter.model.ClusterData;
 import no.statnett.k3alagexporter.model.ConsumerGroupData;
 import no.statnett.k3alagexporter.model.TopicPartitionData;
+import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.Consumer;
+import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.TopicPartition;
+import org.apache.kafka.common.serialization.ByteArrayDeserializer;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -19,11 +22,14 @@ import org.junit.Test;
 
 import java.time.Duration;
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public final class K3aLagExporterIT {
 
     private static KafkaCluster kafkaCluster;
+    private static final String CLUSTER_NAME = "the-cluster";
     private static final String TOPIC = "the-topic";
     private static final String CONSUMER_GROUP_ID = "consumer-group";
     private static ClusterLagCollector lagCollector;
@@ -34,7 +40,9 @@ public final class K3aLagExporterIT {
         kafkaCluster = new KafkaCluster();
         kafkaCluster.start();
         Conf.setFromString(createConfig(kafkaCluster));
-        lagCollector = new ClusterLagCollector(Conf.getClusterName());
+        lagCollector = new ClusterLagCollector(CLUSTER_NAME,
+                                               null, null, null, null,
+                                               kafkaCluster.getMinimalConsumerConfig(), kafkaCluster.getMinimalAdminConfig());
     }
 
     @AfterClass

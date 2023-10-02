@@ -17,6 +17,7 @@ import org.apache.kafka.common.TopicPartition;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Map;
@@ -28,13 +29,20 @@ public final class ClusterLagCollector {
     private final String clusterName;
     private final RegexStringListFilter topicFilter;
     private final RegexStringListFilter consumerGroupFilter;
+    private final Map<String, Object> consumerConfig;
+    private final Map<String, Object> adminConfig;
     private Admin admin;
     private Consumer<?, ?> consumer;
 
-    public ClusterLagCollector(final String clusterName) {
+    public ClusterLagCollector(final String clusterName,
+                               final Collection<String> topicAllowList, final Collection<String> topicDenyList,
+                               final Collection<String> consumerGroupAllowList, final Collection<String> consumerGroupDenyList,
+                               final Map<String, Object> consumerConfig, final Map<String, Object> adminConfig) {
         this.clusterName = clusterName;
-        this.topicFilter = new RegexStringListFilter(Conf.getTopicAllowList(), Conf.getTopicDenyList());
-        this.consumerGroupFilter = new RegexStringListFilter(Conf.getConsumerGroupAllowList(), Conf.getConsumerGroupDenyList());
+        this.topicFilter = new RegexStringListFilter(topicAllowList, topicDenyList);
+        this.consumerGroupFilter = new RegexStringListFilter(consumerGroupAllowList, consumerGroupDenyList);
+        this.consumerConfig = consumerConfig;
+        this.adminConfig = adminConfig;
     }
 
     public ClusterData collect() {
@@ -127,14 +135,14 @@ public final class ClusterLagCollector {
 
     private Admin getAdmin() {
         if (admin == null) {
-            admin = AdminClient.create(Conf.getAdminConfigs());
+            admin = AdminClient.create(adminConfig);
         }
         return admin;
     }
 
     private Consumer<?, ?> getConsumer() {
         if (consumer == null) {
-            consumer = new KafkaConsumer<>(Conf.getConsumerConfigs());
+            consumer = new KafkaConsumer<>(consumerConfig);
         }
         return consumer;
     }

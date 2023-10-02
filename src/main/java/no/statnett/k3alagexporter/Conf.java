@@ -28,7 +28,7 @@ public final class Conf {
         return getCluster().getString("name");
     }
 
-    public static Map<String, Object> getConsumerConfigs() {
+    public static Map<String, Object> getConsumerConfig() {
         final Map<String, Object> map = configToMap(getCluster().getConfig("consumer-properties"));
         map.putIfAbsent(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, getBootstrapServers());
         map.putIfAbsent(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class);
@@ -36,7 +36,7 @@ public final class Conf {
         return map;
     }
 
-    public static Map<String, Object> getAdminConfigs() {
+    public static Map<String, Object> getAdminConfig() {
         final Map<String, Object> map = configToMap(getCluster().getConfig("admin-properties"));
         map.putIfAbsent(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, getBootstrapServers());
         return map;

@@ -1,12 +1,14 @@
 package no.statnett.k3alagexporter.itest.services;
 
 import org.apache.kafka.clients.CommonClientConfigs;
+import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerConfig;
+import org.apache.kafka.common.serialization.ByteArrayDeserializer;
 import org.apache.kafka.common.serialization.IntegerDeserializer;
 import org.apache.kafka.common.serialization.IntegerSerializer;
 import org.testcontainers.containers.KafkaContainer;
@@ -53,6 +55,17 @@ public final class KafkaCluster {
         map.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, IntegerDeserializer.class);
         map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, IntegerDeserializer.class);
         return new KafkaConsumer<>(map);
+    }
+
+    public Map<String, Object> getMinimalAdminConfig() {
+        return getCommonConfig();
+    }
+
+    public Map<String, Object> getMinimalConsumerConfig() {
+        final Map<String, Object> map = getCommonConfig();
+        map.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class);
+        map.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class);
+        return map;
     }
 
     private Map<String, Object> getCommonConfig() {

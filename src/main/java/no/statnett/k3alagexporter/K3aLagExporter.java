@@ -13,7 +13,10 @@ public final class K3aLagExporter {
             final long msBetweenCollections = Conf.getPollIntervalMs();
             final PrometheusReporter prometheusReporter = new PrometheusReporter();
             prometheusReporter.start();
-            final ClusterLagCollector collector = new ClusterLagCollector(Conf.getClusterName());
+            final ClusterLagCollector collector = new ClusterLagCollector(Conf.getClusterName(),
+                                                                          Conf.getTopicAllowList(), Conf.getTopicDenyList(),
+                                                                          Conf.getConsumerGroupAllowList(), Conf.getConsumerGroupDenyList(),
+                                                                          Conf.getConsumerConfig(), Conf.getAdminConfig());
             for (;;) {
                 long t = System.currentTimeMillis();
                 final ClusterData clusterData = collector.collect();
