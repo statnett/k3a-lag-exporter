@@ -45,9 +45,11 @@ public final class ClusterLagCollector {
         final Set<String> allConsumerGroupIds = findAllConsumerGroupIds(getAdmin());
         findConsumerGroupOffsets(getAdmin(), allConsumerGroupIds, clusterData, topicPartitions);
         findEndOffsetsAndUpdateLag(getConsumer(), topicPartitions, clusterData);
+        final long pollTimeMs = System.currentTimeMillis() - startMs;
         if (!isFirstRun) {
-            clusterData.setPollTimeMs(System.currentTimeMillis() - startMs);
+            clusterData.setPollTimeMs(pollTimeMs);
         }
+        LOG.info("Polled lag data for " + clusterName + " in " + pollTimeMs + " ms");
         return clusterData;
     }
 
