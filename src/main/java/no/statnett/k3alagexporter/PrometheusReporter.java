@@ -63,7 +63,7 @@ public final class PrometheusReporter {
         }
     }
 
-    private String buildPrometheusFQName(final String namespace, final String subsystem, final String name) {
+    private static String buildPrometheusFQName(final String namespace, final String subsystem, final String name) {
         return namespace + "_" + subsystem + "_" + name;
     }
 
