@@ -15,7 +15,7 @@ public final class K3aLagExporter {
             final PrometheusReporter prometheusReporter = new PrometheusReporter();
             prometheusReporter.start();
             final ClusterLagCollector collector = new ClusterLagCollector(Conf.getClusterName());
-            for (;;) {
+            while (!shouldStop) {
                 long t = System.currentTimeMillis();
                 final ClusterData clusterData = collector.collect();
                 prometheusReporter.publish(clusterData);
