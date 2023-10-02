@@ -26,6 +26,7 @@ Example configuration:
 k3a-lag-exporter {
     poll-interval = 30 seconds
     reporters.prometheus.port = 8000
+    reporters.prometheus.metric-namespace = k3a
     clusters = [
     {
         name = "the-kafka-cluster"
@@ -62,20 +63,21 @@ k3a-lag-exporter {
 Configuration is handled by
 [Typesafe Config](https://github.com/lightbend/config).
 
-| Element                   | Description                                                                                                                           |
-|---------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
-| k3a-lag-exporter          | The main configuration object.                                                                                                        |
-| poll-interval             | How often to poll the Kafka cluster                                                                                                   |
-| reporters.prometheus.port | Port of built-in Prometheus web server                                                                                                |
-| clusters                  | List of clusters to monitor. Currently, only a single cluster is supported.                                                           |
-| name                      | The cluster name. Will be used as a label in the exported metrics.                                                                    |
-| topic-allow-list          | Optional list of topics to include. See below.                                                                                        |
-| topic-deny-list           | Optional list of topics to exclude. See below.                                                                                        |
-| group-allow-list          | Optional list of consumer groups to include. See below.                                                                               |
-| group-deny-list           | Optional list of consumer groups to exclude. See below.                                                                               |
-| bootstrap-servers         | Kafka server(s) to connect to.                                                                                                        |
-| consumer-properties       | Properties allowing connection to the Kafka cluster as a consumer. Must have DESCRIBE permissions for the cluster, groups and topics. |
-| admin-properties          | Properties allowing connection to the Kafka cluster as an admin. Must have DESCRIBE permissions for the cluster, groups and topics.   |
+| Element                               | Description                                                                                                                           |
+|---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
+| k3a-lag-exporter                      | The main configuration object.                                                                                                        |
+| poll-interval                         | How often to poll the Kafka cluster. Default: 30 seconds                                                                              |
+| reporters.prometheus.port             | Port of built-in Prometheus web server. Default: 8000                                                                                 |
+| reporters.prometheus.metric-namespace | The prefix for Prometheus metrics. Default: k3a                                                                                       |
+| clusters                              | List of clusters to monitor. Currently, only a single cluster is supported.                                                           |
+| name                                  | The cluster name. Will be used as a label in the exported metrics.                                                                    |
+| topic-allow-list                      | Optional list of topics to include. See below.                                                                                        |
+| topic-deny-list                       | Optional list of topics to exclude. See below.                                                                                        |
+| group-allow-list                      | Optional list of consumer groups to include. See below.                                                                               |
+| group-deny-list                       | Optional list of consumer groups to exclude. See below.                                                                               |
+| bootstrap-servers                     | Kafka server(s) to connect to.                                                                                                        |
+| consumer-properties                   | Properties allowing connection to the Kafka cluster as a consumer. Must have DESCRIBE permissions for the cluster, groups and topics. |
+| admin-properties                      | Properties allowing connection to the Kafka cluster as an admin. Must have DESCRIBE permissions for the cluster, groups and topics.   |
 
 The allow- and deny-lists contain regular expressions that are
 implicitly anchored to the beginning and the end of the string.
