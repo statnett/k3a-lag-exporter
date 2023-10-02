@@ -54,7 +54,7 @@ public final class K3aLagExporterIT {
     }
 
     @Test
-    public void test() {
+    public void shouldDetectLag() {
         try (final Producer<Integer, Integer> producer = kafkaCluster.getProducer()) {
             try (final Consumer<Integer, Integer> consumer = kafkaCluster.getConsumer(CONSUMER_GROUP_ID)) {
                 consumer.subscribe(Collections.singleton(TOPIC));
