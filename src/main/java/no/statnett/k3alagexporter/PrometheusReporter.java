@@ -10,14 +10,14 @@ import java.io.IOException;
 
 public final class PrometheusReporter {
 
-    public static final String PROMETHEUS_PREFIX = Conf.getPrometheusMetricPrefix();
+    private static final String PROMETHEUS_NAMESPACE = Conf.getPrometheusMetricNamespace();
     private final Gauge consumerGroupLagGauge = Gauge.builder()
-        .name(PROMETHEUS_PREFIX + "consumergroup_group_lag")
+        .name(buildPrometheusFQName(PROMETHEUS_NAMESPACE, "consumergroup", "group_lag"))
         .labelNames("cluster_name", "group", "topic", "partition" /*, "member_host", "consumer_id", "client_id" */)
         .help("Group offset lag of a partition")
         .register();
     private final Gauge pollTimeMsGauge = Gauge.builder()
-        .name(PROMETHEUS_PREFIX + "lag_exporter_poll_time_ms")
+        .name(buildPrometheusFQName(PROMETHEUS_NAMESPACE, "lag_exporter", "poll_time_ms"))
         .labelNames("cluster_name")
         .help("Time (in ms) spent polling all data")
         .register();
@@ -61,6 +61,10 @@ public final class PrometheusReporter {
                 .labelValues(clusterName)
                 .set(clusterData.getPollTimeMs());
         }
+    }
+
+    private String buildPrometheusFQName(final String namespace, final String subsystem, final String name) {
+        return namespace + "_" + subsystem + "_" + name;
     }
 
 }
