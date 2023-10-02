@@ -60,7 +60,7 @@ k3a-lag-exporter {
 ```
 
 Configuration is handled by
-[lightbend/config](https://github.com/lightbend/config).
+[Typesafe Config](https://github.com/lightbend/config).
 
 | Element                   | Description                                                                                                                           |
 |---------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
