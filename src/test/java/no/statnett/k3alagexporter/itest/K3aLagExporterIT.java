@@ -43,12 +43,12 @@ public final class K3aLagExporterIT {
     }
 
     private static String createConfig(final KafkaCluster kafkaCluster) {
-        return "kafka-lag-exporter {\n"
+        return "k3a-lag-exporter {\n"
                + "  clusters = [ {\n"
                + "    name = \"the-cluster\"\n"
-               + "    bootstrap-brokers = \"" + kafkaCluster.getBootstrapServers() + "\"\n"
+               + "    bootstrap-servers = \"" + kafkaCluster.getBootstrapServers() + "\"\n"
                + "    consumer-properties = {}\n"
-               + "    admin-client-properties = {}\n"
+               + "    admin-properties = {}\n"
                + "  } ]\n"
                + "}\n";
     }
