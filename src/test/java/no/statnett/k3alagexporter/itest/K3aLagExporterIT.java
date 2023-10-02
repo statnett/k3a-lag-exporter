@@ -63,7 +63,9 @@ public final class K3aLagExporterIT {
                 Assert.assertEquals(nextProducedValue - 1, consumedValue);
                 assertLag(0);
                 produce(producer);
+                assertLag(1);
                 produce(producer);
+                assertLag(2);
                 produce(producer);
                 assertLag(3);
                 consume(consumer);
