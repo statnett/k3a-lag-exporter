@@ -34,7 +34,6 @@ public final class K3aLagExporterIT {
     public static void before() {
         kafkaCluster = new KafkaCluster();
         kafkaCluster.start();
-        Conf.setFromString(createConfig(kafkaCluster));
         lagCollector = new ClusterLagCollector(CLUSTER_NAME,
                                                null, null, null, null,
                                                kafkaCluster.getMinimalConsumerConfig(), kafkaCluster.getMinimalAdminConfig());
@@ -43,17 +42,6 @@ public final class K3aLagExporterIT {
     @AfterClass
     public static void after() {
         kafkaCluster.stop();
-    }
-
-    private static String createConfig(final KafkaCluster kafkaCluster) {
-        return "k3a-lag-exporter {\n"
-               + "  clusters = [ {\n"
-               + "    name = \"the-cluster\"\n"
-               + "    bootstrap-servers = \"" + kafkaCluster.getBootstrapServers() + "\"\n"
-               + "    consumer-properties = {}\n"
-               + "    admin-properties = {}\n"
-               + "  } ]\n"
-               + "}\n";
     }
 
     @Test
