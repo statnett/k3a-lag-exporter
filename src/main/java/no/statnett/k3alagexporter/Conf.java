@@ -24,6 +24,10 @@ public final class Conf {
         return conf.getInt(MAIN_OBJECT_NAME + ".reporters.prometheus.port");
     }
 
+    public static String getPrometheusMetricNamespace() {
+        return conf.getString(MAIN_OBJECT_NAME + ".reporters.prometheus.metric-namespace");
+    }
+
     public static String getClusterName() {
         return getCluster().getString("name");
     }
