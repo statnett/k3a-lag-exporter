@@ -60,15 +60,17 @@ k3a-lag-exporter {
 }
 ```
 
-Configuration is handled by
-[Typesafe Config](https://github.com/lightbend/config).
+Configuration is handled by [Typesafe
+Config](https://github.com/lightbend/config). For default values,
+please see [the fallback configuration
+file](https://github.com/statnett/k3a-lag-exporter/blob/main/src/main/resources/reference.conf).
 
 | Element                               | Description                                                                                                                           |
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | k3a-lag-exporter                      | The main configuration object.                                                                                                        |
-| poll-interval                         | How often to poll the Kafka cluster. Default: 30 seconds                                                                              |
-| reporters.prometheus.port             | Port of built-in Prometheus web server. Default: 8000                                                                                 |
-| reporters.prometheus.metric-namespace | The prefix for Prometheus metrics. Default: k3a                                                                                       |
+| poll-interval                         | How often to poll the Kafka cluster.                                                                                                  |
+| reporters.prometheus.port             | Port of built-in Prometheus web server.                                                                                               |
+| reporters.prometheus.metric-namespace | The prefix for Prometheus metrics.                                                                                                    |
 | clusters                              | List of clusters to monitor. Currently, only a single cluster is supported.                                                           |
 | name                                  | The cluster name. Will be used as a label in the exported metrics.                                                                    |
 | topic-allow-list                      | Optional list of topics to include. See below.                                                                                        |
@@ -95,3 +97,11 @@ Filtering happens on the allow-list first, then the deny-list.
 
 * Otherwise, if no deny-list is given, every topic/consumer group from
   the first to steps will be kept.
+
+The image expects to have a configuration file available as
+`/app/k3a-lag-exporter.conf`. You may thus run it like this, giving
+the full path to your local configuration file:
+
+```shell
+docker run -v $(pwd)/my.conf:/app/k3a-lag-exporter.conf ghcr.io/statnett/k3a-lag-exporter:latest
+```
