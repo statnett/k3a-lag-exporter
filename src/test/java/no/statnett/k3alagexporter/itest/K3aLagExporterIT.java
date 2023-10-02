@@ -6,15 +6,12 @@ import no.statnett.k3alagexporter.itest.services.KafkaCluster;
 import no.statnett.k3alagexporter.model.ClusterData;
 import no.statnett.k3alagexporter.model.ConsumerGroupData;
 import no.statnett.k3alagexporter.model.TopicPartitionData;
-import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.Consumer;
-import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.TopicPartition;
-import org.apache.kafka.common.serialization.ByteArrayDeserializer;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -22,8 +19,6 @@ import org.junit.Test;
 
 import java.time.Duration;
 import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.concurrent.ExecutionException;
 
 public final class K3aLagExporterIT {
