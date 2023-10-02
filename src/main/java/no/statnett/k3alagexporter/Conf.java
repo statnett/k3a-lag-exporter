@@ -18,7 +18,7 @@ public final class Conf {
 
     private static final Config DEFAULT_CONFIG = ConfigFactory.parseResources("reference.conf");
     private static Config conf = ConfigFactory.load();
-    private static final String MAIN_OBJECT_NAME = "kafka-lag-exporter";
+    private static final String MAIN_OBJECT_NAME = "k3a-lag-exporter";
 
     public static int getPrometheusPort() {
         return conf.getInt(MAIN_OBJECT_NAME + ".reporters.prometheus.port");
@@ -37,13 +37,13 @@ public final class Conf {
     }
 
     public static Map<String, Object> getAdminConfigs() {
-        final Map<String, Object> map = configToMap(getCluster().getConfig("admin-client-properties"));
+        final Map<String, Object> map = configToMap(getCluster().getConfig("admin-properties"));
         map.putIfAbsent(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, getBootstrapServers());
         return map;
     }
 
     public static String getBootstrapServers() {
-        return getCluster().getString("bootstrap-brokers");
+        return getCluster().getString("bootstrap-servers");
     }
 
     public static long getPollIntervalMs() {
@@ -51,19 +51,19 @@ public final class Conf {
     }
 
     public static Collection<String> getConsumerGroupDenyList() {
-        return getStringCollectionOrNull(getCluster(), "group-blacklist");
+        return getStringCollectionOrNull(getCluster(), "group-deny-list");
     }
 
     public static Collection<String> getConsumerGroupAllowList() {
-        return getStringCollectionOrNull(getCluster(), "group-whitelist");
+        return getStringCollectionOrNull(getCluster(), "group-allow-list");
     }
 
     public static Collection<String> getTopicDenyList() {
-        return getStringCollectionOrNull(getCluster(), "topic-blacklist");
+        return getStringCollectionOrNull(getCluster(), "topic-deny-list");
     }
 
     public static Collection<String> getTopicAllowList() {
-        return getStringCollectionOrNull(getCluster(), "topic-whitelist");
+        return getStringCollectionOrNull(getCluster(), "topic-allow-list");
     }
 
     private static Collection<String> getStringCollectionOrNull(final Config config, final String name) {
