@@ -10,5 +10,6 @@ jobs:
     uses: statnett/workflows/.github/workflows/clean-ghcr.yaml@main
     with:
       image-names: ${{ github.repository }}
+    secrets: inherit
     permissions:
       packages: write
