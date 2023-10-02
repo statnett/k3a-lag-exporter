@@ -9,7 +9,7 @@ jobs:
   trigger:
     uses: statnett/workflows/.github/workflows/clean-ghcr.yaml@main
     with:
-      image-names: ${{ github.repository }}
+      image-names: ${{ github.event.repository.name }}
     secrets: inherit
     permissions:
       packages: write
