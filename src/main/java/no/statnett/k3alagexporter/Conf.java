@@ -94,4 +94,8 @@ public final class Conf {
         conf = ConfigFactory.parseFile(new File(configFile)).withFallback(DEFAULT_CONFIG).resolve();
     }
 
+    public static void setFromString(final String config) {
+        conf = ConfigFactory.parseString(config).withFallback(DEFAULT_CONFIG).resolve();
+    }
+
 }
