@@ -1,7 +1,6 @@
 package no.statnett.k3alagexporter.itest;
 
 import no.statnett.k3alagexporter.ClusterLagCollector;
-import no.statnett.k3alagexporter.Conf;
 import no.statnett.k3alagexporter.itest.services.KafkaCluster;
 import no.statnett.k3alagexporter.model.ClusterData;
 import no.statnett.k3alagexporter.model.ConsumerGroupData;
