@@ -42,8 +42,8 @@ public final class K3aLagExporterIT {
 
     @Test
     public void test() {
-        try (final Producer<Integer, Integer> producer = getProducer()) {
-            try (final Consumer<Integer, Integer> consumer = getConsumer(CONSUMER_GROUP_ID)) {
+        try (final Producer<Integer, Integer> producer = kafkaCluster.getProducer()) {
+            try (final Consumer<Integer, Integer> consumer = kafkaCluster.getConsumer(CONSUMER_GROUP_ID)) {
                 consumer.subscribe(Collections.singleton(TOPIC));
                 produce(producer);
                 final int consumedValue = consume(consumer);
@@ -85,14 +85,6 @@ public final class K3aLagExporterIT {
             throw new RuntimeException("Did not find the metric");
         }
         Assert.assertEquals(expected, metric.value(), 0.00001);
-    }
-
-    private Producer<Integer, Integer> getProducer() {
-        return kafkaCluster.getProducer();
-    }
-
-    private Consumer<Integer, Integer> getConsumer(final String consumerGroupId) {
-        return kafkaCluster.getConsumer(consumerGroupId);
     }
 
     private void produce(final Producer<Integer, Integer> producer) {
