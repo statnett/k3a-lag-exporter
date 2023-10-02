@@ -22,7 +22,6 @@ k3a_lag_exporter_poll_time_ms{cluster_name="the-cluster"} 8
 
 Example configuration:
 
-
 ```text
 k3a-lag-exporter {
     poll-interval = 30 seconds
@@ -46,8 +45,8 @@ k3a-lag-exporter {
         bootstrap-servers = "kafka.example.com:9092"
         consumer-properties = {
             security.protocol = "SASL_SSL"
-                sasl.mechanism = "PLAIN"
-                sasl.jaas.config = "org.apache.kafka.common.security.plain.PlainLoginModule required username='"${USER}"' password='"${PASSWORD}"';"
+            sasl.mechanism = "PLAIN"
+            sasl.jaas.config = "org.apache.kafka.common.security.plain.PlainLoginModule required username='"${USER}"' password='"${PASSWORD}"';"
         }
         admin-properties = {
             security.protocol = SSL
