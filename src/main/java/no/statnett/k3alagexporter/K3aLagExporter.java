@@ -1,38 +1,11 @@
 package no.statnett.k3alagexporter;
 
 import no.statnett.k3alagexporter.model.ClusterData;
+import no.statnett.k3alagexporter.utils.LogUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public final class K3aLagExporter {
-
-    private static final Logger LOG = LoggerFactory.getLogger(K3aLagExporter.class);
-
-    private void doit() {
-        try {
-            final long msBetweenCollections = Conf.getPollIntervalMs();
-            final PrometheusReporter prometheusReporter = new PrometheusReporter();
-            prometheusReporter.start();
-            final ClusterLagCollector collector = new ClusterLagCollector(Conf.getClusterName(),
-                                                                          Conf.getTopicAllowList(), Conf.getTopicDenyList(),
-                                                                          Conf.getConsumerGroupAllowList(), Conf.getConsumerGroupDenyList(),
-                                                                          Conf.getConsumerConfig(), Conf.getAdminConfig());
-            for (;;) {
-                long t = System.currentTimeMillis();
-                final ClusterData clusterData = collector.collect();
-                prometheusReporter.publish(clusterData);
-                t = System.currentTimeMillis() - t;
-                try {
-                    Thread.sleep(Math.max(0, msBetweenCollections - t));
-                } catch (final InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
-            }
-        } catch (final Exception e) {
-            LOG.error("Fatal error. Terminating.", e);
-            System.exit(1);
-        }
-    }
 
     private static void showHelpAndExit() {
         System.out.println("For configuration and usage of k3a-lag-exporter, please see");
@@ -41,6 +14,7 @@ public final class K3aLagExporter {
     }
 
     public static void main(final String[] args) {
+        LogUtils.enableSingleLineLogging();
         if (args.length != 0) {
             showHelpAndExit();
         }
@@ -50,7 +24,7 @@ public final class K3aLagExporter {
             System.exit(1);
         }
         Conf.setFromFile(configFile);
-        new K3aLagExporter().doit();
+        new MainLagExporterLoop().runLoop();
     }
 
 }

@@ -5,6 +5,7 @@ import no.statnett.k3alagexporter.itest.services.KafkaCluster;
 import no.statnett.k3alagexporter.model.ClusterData;
 import no.statnett.k3alagexporter.model.ConsumerGroupData;
 import no.statnett.k3alagexporter.model.TopicPartitionData;
+import no.statnett.k3alagexporter.utils.LogUtils;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerRecord;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
@@ -31,6 +32,7 @@ public final class K3aLagExporterIT {
 
     @BeforeClass
     public static void beforeClass() {
+        LogUtils.enableSingleLineLogging();
         kafkaCluster = new KafkaCluster();
         kafkaCluster.start();
         lagCollector = new ClusterLagCollector(CLUSTER_NAME,
