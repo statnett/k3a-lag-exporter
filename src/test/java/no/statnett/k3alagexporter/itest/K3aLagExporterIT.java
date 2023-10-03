@@ -30,7 +30,7 @@ public final class K3aLagExporterIT {
     private int nextProducedValue = 0;
 
     @BeforeClass
-    public static void before() {
+    public static void beforeClass() {
         kafkaCluster = new KafkaCluster();
         kafkaCluster.start();
         lagCollector = new ClusterLagCollector(CLUSTER_NAME,
@@ -39,7 +39,7 @@ public final class K3aLagExporterIT {
     }
 
     @AfterClass
-    public static void after() {
+    public static void afterClass() {
         kafkaCluster.stop();
     }
 
