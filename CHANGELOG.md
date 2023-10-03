@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.0.4](https://github.com/statnett/k3a-lag-exporter/compare/v0.0.3...v0.0.4) (2023-10-03)
+
+
+### Bug Fixes
+
+* log to single lines ([#38](https://github.com/statnett/k3a-lag-exporter/issues/38)) ([372b305](https://github.com/statnett/k3a-lag-exporter/commit/372b305578fdf02703376fa7aeaedf94f75cf7ee))
+
 ## [0.0.3](https://github.com/statnett/k3a-lag-exporter/compare/v0.0.2...v0.0.3) (2023-10-02)
 
 
