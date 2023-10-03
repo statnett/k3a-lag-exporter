@@ -14,7 +14,7 @@ public final class K3aLagExporter {
     }
 
     public static void main(final String[] args) {
-        LogUtils.enableSingleLineLogging();
+        LogUtils.initLogging();
         if (args.length != 0) {
             showHelpAndExit();
         }

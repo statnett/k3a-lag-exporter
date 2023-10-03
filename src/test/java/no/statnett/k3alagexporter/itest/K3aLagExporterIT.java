@@ -32,7 +32,7 @@ public final class K3aLagExporterIT {
 
     @BeforeClass
     public static void beforeClass() {
-        LogUtils.enableSingleLineLogging();
+        LogUtils.initLogging();
         kafkaCluster = new KafkaCluster();
         kafkaCluster.start();
         lagCollector = new ClusterLagCollector(CLUSTER_NAME,
