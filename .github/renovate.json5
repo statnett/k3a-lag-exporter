@@ -10,7 +10,7 @@
         ".+\\.java",
       ],
       "matchStrings": [
-        "renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+(package|lookup)Name=(?<packageName>\\S+))?(?:\\s+versioning=(?<versioning>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\n.+?_(?:VERSION|version|TAG|tag)\\s*[?=:]+\\s*\"?(?<currentValue>[^\" \\t\\n]+)\"?"
+        "renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+(package|lookup)Name=(?<packageName>\\S+))?(?:\\s+versioning=(?<versioning>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\n.+?_(?:VERSION|version|TAG|tag)\\s*[?=:]+\\s*\"?(?<currentValue>[^\" \\t\\n]+)\"?",
       ],
       "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
     },
