@@ -4,6 +4,14 @@
     "config:base",
   ],
   "ignorePaths": ["**/node_modules/**", "**/bower_components/**"],
+  "packageRules": [
+    {
+      "matchManagers": ["maven"],
+      "matchPackagePrefixes": ["org.slf4j"],
+      // Kafka client library is using v1 and mixing is not an option
+      "allowedVersions": "<2",
+    },
+  ],
   "regexManagers": [
     {
       "fileMatch": [
