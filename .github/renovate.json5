@@ -7,7 +7,6 @@
   "regexManagers": [
     {
       "fileMatch": [
-        "^Dockerfile$",
         ".+\\.java",
       ],
       "matchStrings": [
