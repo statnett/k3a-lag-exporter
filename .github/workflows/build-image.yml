@@ -22,7 +22,7 @@ jobs:
           cache: maven
       - run: mvn --batch-mode --update-snapshots verify
       - uses: docker/setup-qemu-action@v2
-      - uses: docker/setup-buildx-action@v2
+      - uses: docker/setup-buildx-action@v3
       - uses: docker/metadata-action@v5
         id: meta
         with:
