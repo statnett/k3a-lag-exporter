@@ -10,28 +10,16 @@ import org.apache.kafka.clients.producer.ProducerConfig;
 import org.apache.kafka.common.serialization.ByteArrayDeserializer;
 import org.apache.kafka.common.serialization.IntegerDeserializer;
 import org.apache.kafka.common.serialization.IntegerSerializer;
-import org.testcontainers.containers.KafkaContainer;
-import org.testcontainers.utility.DockerImageName;
+import org.springframework.kafka.test.EmbeddedKafkaBroker;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public final class KafkaCluster {
+    private final EmbeddedKafkaBroker broker;
 
-    private KafkaContainer container;
-
-    public void start() {
-        final DockerImageName imageName = DockerImageName.parse("confluentinc/cp-kafka:" + Versions.CONFLUENT_VERSION);
-        container = new KafkaContainer(imageName).withKraft();
-        container.start();
-    }
-
-    public void stop() {
-        container.stop();
-    }
-
-    public String getBootstrapServers() {
-        return String.format("%s:%s", container.getHost(), container.getMappedPort(KafkaContainer.KAFKA_PORT));
+    public KafkaCluster(EmbeddedKafkaBroker broker) {
+        this.broker = broker;
     }
 
     public Producer<Integer, Integer> getProducer() {
@@ -69,7 +57,7 @@ public final class KafkaCluster {
 
     private Map<String, Object> getCommonConfig() {
         final Map<String, Object> map = new HashMap<>();
-        map.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, getBootstrapServers());
+        map.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, broker.getBrokersAsString());
         return map;
     }
 

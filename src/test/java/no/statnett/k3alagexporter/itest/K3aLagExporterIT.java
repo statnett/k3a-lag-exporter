@@ -12,9 +12,10 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.TopicPartition;
-import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.springframework.kafka.test.EmbeddedKafkaBroker;
+import org.springframework.kafka.test.context.EmbeddedKafka;
 
 import java.time.Duration;
 import java.util.Collections;
@@ -23,6 +24,7 @@ import java.util.concurrent.ExecutionException;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+@EmbeddedKafka
 public final class K3aLagExporterIT {
 
     private static KafkaCluster kafkaCluster;
@@ -33,18 +35,12 @@ public final class K3aLagExporterIT {
     private int nextProducedValue = 0;
 
     @BeforeAll
-    public static void beforeClass() {
+    public static void beforeClass(EmbeddedKafkaBroker broker) {
         LogUtils.initLogging();
-        kafkaCluster = new KafkaCluster();
-        kafkaCluster.start();
+        kafkaCluster = new KafkaCluster(broker);
         lagCollector = new ClusterLagCollector(CLUSTER_NAME,
             null, null, null, null,
             kafkaCluster.getMinimalConsumerConfig(), kafkaCluster.getMinimalAdminConfig());
-    }
-
-    @AfterAll
-    public static void afterClass() {
-        kafkaCluster.stop();
     }
 
     @Test
