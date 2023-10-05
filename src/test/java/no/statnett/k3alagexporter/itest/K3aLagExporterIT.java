@@ -12,14 +12,16 @@ import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.producer.Producer;
 import org.apache.kafka.clients.producer.ProducerRecord;
 import org.apache.kafka.common.TopicPartition;
-import org.junit.AfterClass;
-import org.junit.Assert;
-import org.junit.BeforeClass;
-import org.junit.Test;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
 
 import java.time.Duration;
 import java.util.Collections;
 import java.util.concurrent.ExecutionException;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public final class K3aLagExporterIT {
 
@@ -30,17 +32,17 @@ public final class K3aLagExporterIT {
     private static ClusterLagCollector lagCollector;
     private int nextProducedValue = 0;
 
-    @BeforeClass
+    @BeforeAll
     public static void beforeClass() {
         LogUtils.initLogging();
         kafkaCluster = new KafkaCluster();
         kafkaCluster.start();
         lagCollector = new ClusterLagCollector(CLUSTER_NAME,
-                                               null, null, null, null,
-                                               kafkaCluster.getMinimalConsumerConfig(), kafkaCluster.getMinimalAdminConfig());
+            null, null, null, null,
+            kafkaCluster.getMinimalConsumerConfig(), kafkaCluster.getMinimalAdminConfig());
     }
 
-    @AfterClass
+    @AfterAll
     public static void afterClass() {
         kafkaCluster.stop();
     }
@@ -52,7 +54,7 @@ public final class K3aLagExporterIT {
                 consumer.subscribe(Collections.singleton(TOPIC));
                 produce(producer);
                 final int consumedValue = consume(consumer);
-                Assert.assertEquals(nextProducedValue - 1, consumedValue);
+                assertEquals(nextProducedValue - 1, consumedValue);
                 assertLag(0);
                 produce(producer);
                 assertLag(1);
@@ -71,10 +73,10 @@ public final class K3aLagExporterIT {
     private void assertLag(final int expected) {
         final ClusterData clusterData = lagCollector.collect();
         final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(new TopicPartition(TOPIC, 0));
-        Assert.assertNotNull(topicPartitionData);
+        assertNotNull(topicPartitionData);
         final ConsumerGroupData consumerGroupData = topicPartitionData.findConsumerGroupData(CONSUMER_GROUP_ID);
-        Assert.assertNotNull(consumerGroupData);
-        Assert.assertEquals(expected, consumerGroupData.getLag(), 0.00001);
+        assertNotNull(consumerGroupData);
+        assertEquals(expected, consumerGroupData.getLag(), 0.00001);
     }
 
     private void produce(final Producer<Integer, Integer> producer) {
