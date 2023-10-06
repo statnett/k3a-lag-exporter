@@ -30,7 +30,7 @@ public final class K3aLagExporterIT {
     private static final String TOPIC = "the-topic";
     private static final String CONSUMER_GROUP_ID = "consumer-group";
     private static ClusterLagCollector lagCollector;
-    private int nextProducedValue = 0;
+    private int lastProducedValue = 0;
 
     @BeforeAll
     public static void beforeClass() {
@@ -54,7 +54,7 @@ public final class K3aLagExporterIT {
                 consumer.subscribe(Collections.singleton(TOPIC));
                 produce(producer);
                 int consumedValue = consume(consumer);
-                assertEquals(nextProducedValue - 1, consumedValue);
+                assertEquals(lastProducedValue, consumedValue);
                 assertLag(0);
                 produce(producer);
                 assertLag(1);
@@ -64,7 +64,7 @@ public final class K3aLagExporterIT {
                 assertLag(3);
                 do {
                     consumedValue = consume(consumer);
-                } while (consumedValue < nextProducedValue - 1);
+                } while (consumedValue < lastProducedValue);
                 assertLag(0);
             }
         }
@@ -80,14 +80,13 @@ public final class K3aLagExporterIT {
     }
 
     private void produce(final Producer<Integer, Integer> producer) {
-        final ProducerRecord<Integer, Integer> record = new ProducerRecord<>(TOPIC, 0, nextProducedValue);
+        final ProducerRecord<Integer, Integer> record = new ProducerRecord<>(TOPIC, 0, ++lastProducedValue);
         try {
             producer.send(record, (metadata, exception) -> {
                 if (exception != null) {
                     throw (exception instanceof RuntimeException) ? (RuntimeException) exception : new RuntimeException(exception);
                 }
             }).get(); // Make call synchronous, to be able to get exceptions in time.
-            ++nextProducedValue;
         } catch (final InterruptedException | ExecutionException e) {
             final Throwable cause = e.getCause();
             throw (cause instanceof RuntimeException) ? (RuntimeException) cause : new RuntimeException(e);
