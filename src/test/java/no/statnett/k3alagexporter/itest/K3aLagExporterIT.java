@@ -30,7 +30,7 @@ public final class K3aLagExporterIT {
     private static final String TOPIC = "the-topic";
     private static final String CONSUMER_GROUP_ID = "consumer-group";
     private static ClusterLagCollector lagCollector;
-    private int lastProducedValue = 0;
+    private int lastProducedValue = -1;
 
     @BeforeAll
     public static void beforeClass() {
