@@ -53,7 +53,7 @@ public final class K3aLagExporterIT {
             try (final Consumer<Integer, Integer> consumer = kafkaCluster.getConsumer(CONSUMER_GROUP_ID)) {
                 consumer.subscribe(Collections.singleton(TOPIC));
                 produce(producer);
-                final int consumedValue = consume(consumer);
+                int consumedValue = consume(consumer);
                 assertEquals(nextProducedValue - 1, consumedValue);
                 assertLag(0);
                 produce(producer);
@@ -62,9 +62,9 @@ public final class K3aLagExporterIT {
                 assertLag(2);
                 produce(producer);
                 assertLag(3);
-                consume(consumer);
-                consume(consumer);
-                consume(consumer);
+                do {
+                    consumedValue = consume(consumer);
+                } while (consumedValue < nextProducedValue - 1);
                 assertLag(0);
             }
         }
