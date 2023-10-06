@@ -7,7 +7,7 @@ package no.statnett.k3alagexporter.itest.services;
 final class Versions {
 
     // renovate: datasource=docker depName=confluentinc/cp-kafka
-    static final String CONFLUENT_VERSION = "7.5.0";
+    static final String CONFLUENT_VERSION = "7.5.1";
 
     private Versions() {
     }
