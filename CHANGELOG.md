@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.1.0](https://github.com/statnett/k3a-lag-exporter/compare/v0.0.4...v0.1.0) (2023-10-07)
+
+
+### ⚠ BREAKING CHANGES
+
+* change slf4j backend to Logback ([#73](https://github.com/statnett/k3a-lag-exporter/issues/73))
+
+### Features
+
+* change slf4j backend to Logback ([#73](https://github.com/statnett/k3a-lag-exporter/issues/73)) ([964dffc](https://github.com/statnett/k3a-lag-exporter/commit/964dffcf1c3191602645c2470236d78564e37d9c))
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.apache.kafka:kafka-clients to v3.6.0 ([#44](https://github.com/statnett/k3a-lag-exporter/issues/44)) ([8d7bcff](https://github.com/statnett/k3a-lag-exporter/commit/8d7bcffb1424901632469c75e94e4c1882510472))
+
 ## [0.0.4](https://github.com/statnett/k3a-lag-exporter/compare/v0.0.3...v0.0.4) (2023-10-03)
 
 
