@@ -5,7 +5,6 @@ import no.statnett.k3alagexporter.ClusterLagCollector;
 import no.statnett.k3alagexporter.model.ClusterData;
 import no.statnett.k3alagexporter.model.ConsumerGroupData;
 import no.statnett.k3alagexporter.model.TopicPartitionData;
-import no.statnett.k3alagexporter.utils.LogUtils;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
@@ -44,7 +43,6 @@ public final class K3aLagExporterIT {
 
     @BeforeAll
     public static void beforeClass() {
-        LogUtils.initLogging();
         broker = new K3aEmbedded();
         broker.start();
     }
