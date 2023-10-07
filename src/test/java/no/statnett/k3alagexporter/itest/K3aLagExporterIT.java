@@ -35,7 +35,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 public final class K3aLagExporterIT {
 
-    private static K3aEmbedded kafka;
+    private static K3aEmbedded broker;
     private static final String CLUSTER_NAME = "the-cluster";
     private static final String TOPIC = "the-topic";
     private static final String CONSUMER_GROUP_ID = "consumer-group";
@@ -45,13 +45,13 @@ public final class K3aLagExporterIT {
     @BeforeAll
     public static void beforeClass() {
         LogUtils.initLogging();
-        kafka = new K3aEmbedded();
-        kafka.start();
+        broker = new K3aEmbedded();
+        broker.start();
     }
 
     @AfterAll
     public static void afterClass() {
-        kafka.stop();
+        broker.stop();
     }
 
     @Test
@@ -149,7 +149,7 @@ public final class K3aLagExporterIT {
 
     private Map<String, Object> getCommonConfig() {
         final Map<String, Object> map = new HashMap<>();
-        map.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, kafka.getBootstrapServers());
+        map.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, broker.getBootstrapServers());
         return map;
     }
 
