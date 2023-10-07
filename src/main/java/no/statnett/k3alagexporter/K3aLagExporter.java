@@ -1,10 +1,5 @@
 package no.statnett.k3alagexporter;
 
-import no.statnett.k3alagexporter.model.ClusterData;
-import no.statnett.k3alagexporter.utils.LogUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public final class K3aLagExporter {
 
     private static void showHelpAndExit() {
@@ -14,7 +9,6 @@ public final class K3aLagExporter {
     }
 
     public static void main(final String[] args) {
-        LogUtils.initLogging();
         if (args.length != 0) {
             showHelpAndExit();
         }
