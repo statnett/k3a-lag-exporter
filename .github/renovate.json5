@@ -1,18 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
-  ],
-  "ignorePaths": ["**/node_modules/**", "**/bower_components/**"],
-  "regexManagers": [
-    {
-      "fileMatch": [
-        ".+\\.java",
-      ],
-      "matchStrings": [
-        "renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+(package|lookup)Name=(?<packageName>\\S+))?(?:\\s+versioning=(?<versioning>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\n.+?_(?:VERSION|version|TAG|tag)\\s*[?=:]+\\s*\"?(?<currentValue>[^\" \\t\\n]+)\"?",
-      ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
-    },
+    "extends": ["github>statnett/renovate-config"],
   ],
 }
