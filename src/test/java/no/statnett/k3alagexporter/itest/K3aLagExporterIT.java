@@ -1,7 +1,7 @@
 package no.statnett.k3alagexporter.itest;
 
+import no.shhsoft.k3aembedded.K3aEmbedded;
 import no.statnett.k3alagexporter.ClusterLagCollector;
-import no.statnett.k3alagexporter.itest.k3aembedded.K3aEmbedded;
 import no.statnett.k3alagexporter.model.ClusterData;
 import no.statnett.k3alagexporter.model.ConsumerGroupData;
 import no.statnett.k3alagexporter.model.TopicPartitionData;

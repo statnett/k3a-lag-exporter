@@ -1,5 +1,7 @@
 package no.statnett.k3alagexporter;
 
+import no.statnett.k3alagexporter.utils.LogUtils;
+
 public final class K3aLagExporter {
 
     private static void showHelpAndExit() {
