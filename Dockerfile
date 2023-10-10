@@ -1,9 +1,10 @@
 FROM maven:3-eclipse-temurin-17 AS builder
 WORKDIR /workspace
 COPY pom.xml pom.xml
-RUN mvn dependency:resolve
-COPY src/ src/
-RUN mvn --batch-mode verify
+# Tests are run outside docker-build
+RUN mvn dependency:resolve -DincludeScope=runtime
+COPY src/main src/main
+RUN mvn --batch-mode -Dmaven.test.skip=true package
 
 FROM eclipse-temurin:17.0.8_7-jre-alpine
 WORKDIR /app
