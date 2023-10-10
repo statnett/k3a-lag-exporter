@@ -7,6 +7,8 @@ on:
     tags:
       - v*
 
+permissions:
+  contents: read
 jobs:
   build-push-image:
     if: ${{ github.repository == 'statnett/k3a-lag-exporter' }}
