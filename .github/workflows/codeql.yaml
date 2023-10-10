@@ -1,0 +1,23 @@
+---
+name: CodeQL
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  schedule:
+    - cron: "34 0 * * 3"
+
+permissions:
+  contents: read
+jobs:
+  trigger:
+    uses: statnett/github-workflows/.github/workflows/codeql.yaml@main
+    with:
+      language: java
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
