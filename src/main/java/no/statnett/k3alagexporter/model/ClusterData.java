@@ -1,3 +1,4 @@
+
 package no.statnett.k3alagexporter.model;
 
 import org.apache.kafka.common.TopicPartition;
