@@ -1,5 +1,17 @@
 # Changelog
 
+## [0.2.0](https://github.com/statnett/k3a-lag-exporter/compare/v0.1.0...v0.2.0) (2023-10-11)
+
+
+### Features
+
+* support for JSON log format (and make it the new default) ([#76](https://github.com/statnett/k3a-lag-exporter/issues/76)) ([6ce201f](https://github.com/statnett/k3a-lag-exporter/commit/6ce201f1912915482b09556ab08263a70bde09da))
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.15.2 ([#77](https://github.com/statnett/k3a-lag-exporter/issues/77)) ([94ed57c](https://github.com/statnett/k3a-lag-exporter/commit/94ed57cf5abfb9733416d2b5bee5e739b97fefeb))
+
 ## [0.1.0](https://github.com/statnett/k3a-lag-exporter/compare/v0.0.4...v0.1.0) (2023-10-07)
 
 
