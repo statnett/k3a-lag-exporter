@@ -43,7 +43,7 @@ public final class K3aLagExporterIT {
 
     @BeforeAll
     public static void beforeClass() {
-        broker = new K3aEmbedded();
+        broker = new K3aEmbedded.Builder().build();
         broker.start();
     }
 
