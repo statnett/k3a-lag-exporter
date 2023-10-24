@@ -55,8 +55,8 @@ public final class K3aLagExporterIT {
         lagCollector = new ClusterLagCollector(CLUSTER_NAME,
                                                null, null, null, null,
                                                getMinimalConsumerConfig(), getMinimalAdminConfig());
-        try (final Producer<Integer, String> producer = getProducer()) {
-            try (final Consumer<Integer, String> consumer = getConsumer(CONSUMER_GROUP_ID)) {
+        try (final Producer<Integer, String> producer = new KafkaProducer<>(K3aTestUtils.producerProps(broker))) {
+            try (final Consumer<Integer, String> consumer = new KafkaConsumer<>(K3aTestUtils.consumerProps(CONSUMER_GROUP_ID, false, broker))) {
                 consumer.subscribe(Collections.singleton(TOPIC));
                 produce(producer);
                 int consumedValue = consume(consumer);
@@ -108,14 +108,6 @@ public final class K3aLagExporterIT {
             consumer.commitAsync();
         }
         return lastValue;
-    }
-
-    public Producer<Integer, String> getProducer() {
-        return new KafkaProducer<>(K3aTestUtils.producerProps(broker));
-    }
-
-    public Consumer<Integer, String> getConsumer(final String consumerGroupId) {
-        return new KafkaConsumer<>(K3aTestUtils.consumerProps(consumerGroupId, false, broker));
     }
 
     public Map<String, Object> getMinimalAdminConfig() {
