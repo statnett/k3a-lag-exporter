@@ -1,9 +1,9 @@
-package no.statnett.k3alagexporter;
+package io.statnett.k3a.lagexporter;
 
-import no.statnett.k3alagexporter.model.ClusterData;
-import no.statnett.k3alagexporter.model.ConsumerGroupData;
-import no.statnett.k3alagexporter.model.TopicPartitionData;
-import no.statnett.k3alagexporter.utils.RegexStringListFilter;
+import io.statnett.k3a.lagexporter.model.ClusterData;
+import io.statnett.k3a.lagexporter.model.ConsumerGroupData;
+import io.statnett.k3a.lagexporter.model.TopicPartitionData;
+import io.statnett.k3a.lagexporter.utils.RegexStringListFilter;
 import org.apache.kafka.clients.admin.Admin;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.ConsumerGroupListing;

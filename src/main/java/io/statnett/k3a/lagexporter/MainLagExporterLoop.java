@@ -1,6 +1,6 @@
-package no.statnett.k3alagexporter;
+package io.statnett.k3a.lagexporter;
 
-import no.statnett.k3alagexporter.model.ClusterData;
+import io.statnett.k3a.lagexporter.model.ClusterData;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

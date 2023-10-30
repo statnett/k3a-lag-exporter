@@ -1,11 +1,11 @@
-package no.statnett.k3alagexporter.itest;
+package io.statnett.k3a.lagexporter.itest;
 
+import io.statnett.k3a.lagexporter.ClusterLagCollector;
+import io.statnett.k3a.lagexporter.model.ClusterData;
+import io.statnett.k3a.lagexporter.model.ConsumerGroupData;
+import io.statnett.k3a.lagexporter.model.TopicPartitionData;
 import no.shhsoft.k3aembedded.K3aEmbedded;
 import no.shhsoft.k3aembedded.K3aTestUtils;
-import no.statnett.k3alagexporter.ClusterLagCollector;
-import no.statnett.k3alagexporter.model.ClusterData;
-import no.statnett.k3alagexporter.model.ConsumerGroupData;
-import no.statnett.k3alagexporter.model.TopicPartitionData;
 import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.ConsumerConfig;

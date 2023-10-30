@@ -1,4 +1,4 @@
-package no.statnett.k3alagexporter;
+package io.statnett.k3a.lagexporter;
 
 public final class K3aLagExporter {
 
