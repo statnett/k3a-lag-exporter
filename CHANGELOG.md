@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.3.0](https://github.com/statnett/k3a-lag-exporter/compare/v0.2.2...v0.3.0) (2023-11-01)
+
+
+### ⚠ BREAKING CHANGES
+
+* use io.statnett as prefix ([#102](https://github.com/statnett/k3a-lag-exporter/issues/102))
+
+### Features
+
+* use io.statnett as prefix ([#102](https://github.com/statnett/k3a-lag-exporter/issues/102)) ([4ece8c8](https://github.com/statnett/k3a-lag-exporter/commit/4ece8c8e09edb3c5184aa999a4881ba3f6bcac6c))
+
 ## [0.2.2](https://github.com/statnett/k3a-lag-exporter/compare/v0.2.1...v0.2.2) (2023-10-17)
 
 
