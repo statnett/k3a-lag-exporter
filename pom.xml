@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>no.statnett</groupId>
+    <groupId>io.statnett.k3a</groupId>
     <artifactId>k3a-lag-exporter</artifactId>
     <version>0.2.3-SNAPSHOT</version>
 
@@ -137,7 +137,7 @@
                     </descriptorRefs>
                     <archive>
                         <manifest>
-                            <mainClass>no.statnett.k3alagexporter.K3aLagExporter</mainClass>
+                            <mainClass>io.statnett.k3a.lagexporter.K3aLagExporter</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

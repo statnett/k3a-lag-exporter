@@ -1,4 +1,4 @@
-package no.statnett.k3alagexporter.utils;
+package io.statnett.k3a.lagexporter.utils;
 
 import java.util.ArrayList;
 import java.util.Collection;

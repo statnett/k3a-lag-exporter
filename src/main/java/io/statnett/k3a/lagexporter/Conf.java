@@ -1,4 +1,4 @@
-package no.statnett.k3alagexporter;
+package io.statnett.k3a.lagexporter;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;

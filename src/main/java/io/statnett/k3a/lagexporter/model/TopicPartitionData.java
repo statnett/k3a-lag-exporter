@@ -1,4 +1,4 @@
-package no.statnett.k3alagexporter.model;
+package io.statnett.k3a.lagexporter.model;
 
 import org.apache.kafka.common.TopicPartition;
 
