@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.2](https://github.com/statnett/k3a-lag-exporter/compare/v0.3.1...v0.3.2) (2023-11-13)
+
+
+### Bug Fixes
+
+* **deps:** upgrade vulnerable Alpine packages ([#114](https://github.com/statnett/k3a-lag-exporter/issues/114)) ([f9f659b](https://github.com/statnett/k3a-lag-exporter/commit/f9f659b91e9d9bf458ef3821a8dcb1d992976ee4))
+
 ## [0.3.1](https://github.com/statnett/k3a-lag-exporter/compare/v0.3.0...v0.3.1) (2023-11-13)
 
 
