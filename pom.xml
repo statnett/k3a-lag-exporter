@@ -12,7 +12,7 @@
         <kafka.version>3.6.0</kafka.version>
         <!-- Must manage Jackson dependencies to avoid conflicts with Scala -->
         <!-- Scala module 2.13.5 requires Jackson Databind version >= 2.13.0 and < 2.14.0 - Found jackson-databind version 2.15.2 -->
-        <jackson.version>2.15.3</jackson.version>
+        <jackson.version>2.16.0</jackson.version>
     </properties>
 
     <dependencyManagement>
