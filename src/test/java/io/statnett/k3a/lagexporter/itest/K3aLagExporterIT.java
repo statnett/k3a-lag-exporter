@@ -77,7 +77,7 @@ public final class K3aLagExporterIT {
     }
 
     private void assertLag(final int expected) {
-        final ClusterData clusterData = lagCollector.collect();
+        final ClusterData clusterData = lagCollector.collectClusterData();
         final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(new TopicPartition(TOPIC, 0));
         assertNotNull(topicPartitionData);
         final ConsumerGroupData consumerGroupData = topicPartitionData.findConsumerGroupData(CONSUMER_GROUP_ID);

@@ -9,6 +9,7 @@ public final class TopicPartitionData {
 
     private final TopicPartition topicPartition;
     private long endOffset = -1;
+    private int numReplicas = -1;
     private final Map<String, ConsumerGroupData> consumerGroupDataMap = new HashMap<>();
 
     public TopicPartitionData(final TopicPartition topicPartition) {
@@ -27,6 +28,14 @@ public final class TopicPartitionData {
         this.endOffset = endOffset;
     }
 
+    public int getNumReplicas() {
+        return numReplicas;
+    }
+
+    public void setNumReplicas(final int numReplicas) {
+        this.numReplicas = numReplicas;
+    }
+
     public Map<String, ConsumerGroupData> getConsumerGroupDataMap() {
         return consumerGroupDataMap;
     }
@@ -40,7 +49,11 @@ public final class TopicPartitionData {
     public void calculateLags() {
         synchronized (consumerGroupDataMap) {
             for (final ConsumerGroupData consumerGroupData : consumerGroupDataMap.values()) {
-                consumerGroupData.setLag(Math.max(0, endOffset - consumerGroupData.getOffset()));
+                if (endOffset < 0) {
+                    consumerGroupData.setLag(-1);
+                } else {
+                    consumerGroupData.setLag(Math.max(0, endOffset - consumerGroupData.getOffset()));
+                }
             }
         }
     }

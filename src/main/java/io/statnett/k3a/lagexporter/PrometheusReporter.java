@@ -47,10 +47,14 @@ public final class PrometheusReporter {
             final String topic = topicPartitionData.getTopicPartition().topic();
             final String partition = String.valueOf(topicPartitionData.getTopicPartition().partition());
             for (final ConsumerGroupData consumerGroupData : topicPartitionData.getConsumerGroupDataMap().values()) {
+                final long lag = consumerGroupData.getLag();
+                if (lag < 0) {
+                    continue;
+                }
                 final String consumerGroupId = consumerGroupData.getConsumerGroupId();
                 consumerGroupLagGauge
                     .labelValues(clusterName, consumerGroupId, topic, partition)
-                    .set(consumerGroupData.getLag());
+                    .set(lag);
             }
         }
     }
