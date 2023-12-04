@@ -123,6 +123,8 @@ public final class K3aLagExporterIT {
 
     private Map<String, Object> getCommonConfig() {
         final Map<String, Object> map = new HashMap<>();
+        map.put(CommonClientConfigs.DEFAULT_API_TIMEOUT_MS_CONFIG, 10000);
+        map.put(CommonClientConfigs.REQUEST_TIMEOUT_MS_CONFIG, 10000);
         map.put(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, broker.getBootstrapServers());
         return map;
     }

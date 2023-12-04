@@ -3,6 +3,7 @@ package io.statnett.k3a.lagexporter;
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
 import com.typesafe.config.ConfigValue;
+import org.apache.kafka.clients.CommonClientConfigs;
 import org.apache.kafka.clients.admin.AdminClientConfig;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.ByteArrayDeserializer;
@@ -34,6 +35,7 @@ public final class Conf {
 
     public static Map<String, Object> getConsumerConfig() {
         final Map<String, Object> map = configToMap(getCluster().getConfig("consumer-properties"));
+        addTimeoutConfigs(map);
         map.putIfAbsent(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, getBootstrapServers());
         map.putIfAbsent(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class);
         map.putIfAbsent(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, ByteArrayDeserializer.class);
@@ -42,8 +44,14 @@ public final class Conf {
 
     public static Map<String, Object> getAdminConfig() {
         final Map<String, Object> map = configToMap(getCluster().getConfig("admin-properties"));
+        addTimeoutConfigs(map);
         map.putIfAbsent(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, getBootstrapServers());
         return map;
+    }
+
+    private static void addTimeoutConfigs(final Map<String, Object> map) {
+        map.put(CommonClientConfigs.DEFAULT_API_TIMEOUT_MS_CONFIG, getClientTimeoutMs());
+        map.put(CommonClientConfigs.REQUEST_TIMEOUT_MS_CONFIG, getClientTimeoutMs());
     }
 
     public static String getBootstrapServers() {
@@ -52,6 +60,10 @@ public final class Conf {
 
     public static long getPollIntervalMs() {
         return conf.getDuration(MAIN_OBJECT_NAME + ".poll-interval").toMillis();
+    }
+
+    public static int getClientTimeoutMs() {
+        return (int) conf.getDuration(MAIN_OBJECT_NAME + ".kafka-client-timeout").toMillis();
     }
 
     public static Collection<String> getConsumerGroupDenyList() {
