@@ -49,7 +49,11 @@ public final class TopicPartitionData {
     public void calculateLags() {
         synchronized (consumerGroupDataMap) {
             for (final ConsumerGroupData consumerGroupData : consumerGroupDataMap.values()) {
-                consumerGroupData.setLag(Math.max(0, endOffset - consumerGroupData.getOffset()));
+                if (endOffset < 0) {
+                    consumerGroupData.setLag(-1);
+                } else {
+                    consumerGroupData.setLag(Math.max(0, endOffset - consumerGroupData.getOffset()));
+                }
             }
         }
     }
