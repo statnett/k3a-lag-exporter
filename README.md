@@ -69,6 +69,7 @@ file](https://github.com/statnett/k3a-lag-exporter/blob/main/src/main/resources/
 |---------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------|
 | k3a-lag-exporter                      | The main configuration object.                                                                                                        |
 | poll-interval                         | How often to poll the Kafka cluster.                                                                                                  |
+| kafka-client-timeout                  | Timeout when querying Kafka API.                                                                                                      |
 | reporters.prometheus.port             | Port of built-in Prometheus web server.                                                                                               |
 | reporters.prometheus.metric-namespace | The prefix for Prometheus metrics.                                                                                                    |
 | clusters                              | List of clusters to monitor. Currently, only a single cluster is supported.                                                           |
