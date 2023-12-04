@@ -20,7 +20,7 @@ final class MainLagExporterLoop {
                                                                           Conf.getConsumerConfig(), Conf.getAdminConfig());
             for (;;) {
                 long t = System.currentTimeMillis();
-                final ClusterData clusterData = collector.collect();
+                final ClusterData clusterData = collector.collectClusterData();
                 prometheusReporter.publish(clusterData);
                 t = System.currentTimeMillis() - t;
                 try {

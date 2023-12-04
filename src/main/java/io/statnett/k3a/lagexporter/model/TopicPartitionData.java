@@ -9,6 +9,7 @@ public final class TopicPartitionData {
 
     private final TopicPartition topicPartition;
     private long endOffset = -1;
+    private int numReplicas = -1;
     private final Map<String, ConsumerGroupData> consumerGroupDataMap = new HashMap<>();
 
     public TopicPartitionData(final TopicPartition topicPartition) {
@@ -25,6 +26,14 @@ public final class TopicPartitionData {
 
     public void setEndOffset(final long endOffset) {
         this.endOffset = endOffset;
+    }
+
+    public int getNumReplicas() {
+        return numReplicas;
+    }
+
+    public void setNumReplicas(final int numReplicas) {
+        this.numReplicas = numReplicas;
     }
 
     public Map<String, ConsumerGroupData> getConsumerGroupDataMap() {
