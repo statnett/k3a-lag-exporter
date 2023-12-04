@@ -1,5 +1,21 @@
 # Changelog
 
+## [0.4.0](https://github.com/statnett/k3a-lag-exporter/compare/v0.3.2...v0.4.0) (2023-12-04)
+
+
+### Features
+
+* group by multi/single replica partitions ([#124](https://github.com/statnett/k3a-lag-exporter/issues/124)) ([263715c](https://github.com/statnett/k3a-lag-exporter/commit/263715c62e789b67497ee1613f6049956832648f))
+* make timeout configurable, and set to 10s default ([#123](https://github.com/statnett/k3a-lag-exporter/issues/123)) ([1571367](https://github.com/statnett/k3a-lag-exporter/commit/1571367840e87db5017a988be42821bfece7d337))
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.4.12 ([#119](https://github.com/statnett/k3a-lag-exporter/issues/119)) ([63cb2f8](https://github.com/statnett/k3a-lag-exporter/commit/63cb2f83cc4c2b26f5f66ed2fce650d8ffca46ea))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.4.13 ([#120](https://github.com/statnett/k3a-lag-exporter/issues/120)) ([ef31c02](https://github.com/statnett/k3a-lag-exporter/commit/ef31c02d782ab9f221ac22bb181dbae762669e13))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.4.14 ([#122](https://github.com/statnett/k3a-lag-exporter/issues/122)) ([2163571](https://github.com/statnett/k3a-lag-exporter/commit/2163571f1de79e2c0f1858291a905cede3adc7ef))
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.16.0 ([#117](https://github.com/statnett/k3a-lag-exporter/issues/117)) ([ef2d430](https://github.com/statnett/k3a-lag-exporter/commit/ef2d430c07a7f60650e689c77fa73b8278216653))
+
 ## [0.3.2](https://github.com/statnett/k3a-lag-exporter/compare/v0.3.1...v0.3.2) (2023-11-13)
 
 
