@@ -9,7 +9,7 @@
     <properties>
         <java.version>21</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <kafka.version>3.6.0</kafka.version>
+        <kafka.version>3.6.1</kafka.version>
         <!-- Must manage Jackson dependencies to avoid conflicts with Scala -->
         <!-- Scala module 2.13.5 requires Jackson Databind version >= 2.13.0 and < 2.14.0 - Found jackson-databind version 2.15.2 -->
         <jackson.version>2.16.0</jackson.version>
@@ -88,7 +88,7 @@
         <dependency>
             <groupId>no.shhsoft</groupId>
             <artifactId>k3a-embedded</artifactId>
-            <version>0.5.1+${kafka.version}</version>
+            <version>0.5.2+${kafka.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
