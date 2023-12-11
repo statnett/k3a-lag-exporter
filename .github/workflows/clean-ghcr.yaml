@@ -1,10 +1,8 @@
 ---
 name: Delete Obsolete GHCR Images
 on:
-# FIXME: Create (classic) PAT to make GHCR cleanup work.
-# Ref. https://github.com/statnett/github-workflows/blob/main/.github/workflows/clean-ghcr.yaml#L18-L22
-#  schedule:
-#    - cron: "0 1 * * *"  # every day at midnight
+  schedule:
+    - cron: "0 1 * * *"  # every day at midnight
   workflow_dispatch:
 
 permissions:
@@ -12,8 +10,6 @@ permissions:
 jobs:
   trigger:
     uses: statnett/github-workflows/.github/workflows/clean-ghcr.yaml@main
-    with:
-      image-names: ${{ github.event.repository.name }}
     secrets: inherit
     permissions:
       packages: write
