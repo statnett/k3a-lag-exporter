@@ -13,6 +13,7 @@
         <!-- Must manage Jackson dependencies to avoid conflicts with Scala -->
         <!-- Scala module 2.13.5 requires Jackson Databind version >= 2.13.0 and < 2.14.0 - Found jackson-databind version 2.15.2 -->
         <jackson.version>2.16.0</jackson.version>
+        <maven-surefire.version>3.2.3</maven-surefire.version>
     </properties>
 
     <dependencyManagement>
@@ -109,13 +110,13 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.2.3</version>
+                <version>${maven-surefire.version}</version>
             </plugin>
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-failsafe-plugin</artifactId>
-                <version>3.2.3</version>
+                <version>${maven-surefire.version}</version>
                 <executions>
                     <execution>
                         <goals>
