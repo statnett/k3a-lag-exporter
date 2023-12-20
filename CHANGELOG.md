@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.1](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.0...v0.4.1) (2023-12-20)
+
+
+### Bug Fixes
+
+* handle one more timeout ([#134](https://github.com/statnett/k3a-lag-exporter/issues/134)) ([399ecff](https://github.com/statnett/k3a-lag-exporter/commit/399ecff8aad41d9c9ef7c99b74eb5578ea61ef33))
+
 ## [0.4.0](https://github.com/statnett/k3a-lag-exporter/compare/v0.3.2...v0.4.0) (2023-12-04)
 
 
