@@ -66,9 +66,9 @@ public final class ClusterLagCollector {
     }
 
     private Set<String> findAllConsumerGroupIds(final Admin admin) {
+        final Set<String> consumerGroupIds = new HashSet<>();
         try {
             long t = System.currentTimeMillis();
-            final Set<String> consumerGroupIds = new HashSet<>();
             final ListConsumerGroupsResult listConsumerGroupsResult = admin.listConsumerGroups();
             for (final ConsumerGroupListing consumerGroupListing : listConsumerGroupsResult.all().get()) {
                 final String consumerGroupId = consumerGroupListing.groupId();
@@ -79,12 +79,19 @@ public final class ClusterLagCollector {
             t = System.currentTimeMillis() - t;
             LOG.debug("Found all consumer group ids in " + t + " ms");
             return consumerGroupIds;
+        } catch (final TimeoutException e) {
+            LOG.warn("Got timeout while listing consumer groups.");
+            invalidateClients();
+            return consumerGroupIds;
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }
     }
 
     private void findConsumerGroupOffsets(final Admin admin, final Set<String> consumerGroupIds, final ClusterData clusterData, final Set<TopicPartition> topicPartitions) {
+        if (consumerGroupIds.isEmpty()) {
+            return;
+        }
         try {
             long t = System.currentTimeMillis();
             final ListConsumerGroupOffsetsResult listConsumerGroupOffsetsResult = admin.listConsumerGroupOffsets(toMapForAllOffsets(consumerGroupIds));
@@ -124,6 +131,9 @@ public final class ClusterLagCollector {
     }
 
     private void findReplicaCounts(final Admin admin, final ClusterData clusterData, final Set<TopicPartition> topicPartitions) {
+        if (topicPartitions.isEmpty()) {
+            return;
+        }
         final Set<String> topics = new HashSet<>();
         for (final TopicPartition topicPartition : topicPartitions) {
             topics.add(topicPartition.topic());
@@ -142,6 +152,9 @@ public final class ClusterLagCollector {
     }
 
     private void findEndOffsetsAndUpdateLag(final Consumer<?, ?> consumer, final Set<TopicPartition> topicPartitions, final ClusterData clusterData) {
+        if (topicPartitions.isEmpty()) {
+            return;
+        }
         long t = System.currentTimeMillis();
         final Set<TopicPartition> multiReplicaPartitions = new HashSet<>();
         final Set<TopicPartition> singleReplicaPartitions = new HashSet<>();
@@ -170,11 +183,16 @@ public final class ClusterLagCollector {
             }
         } catch (final TimeoutException e) {
             LOG.warn("Got timeout while querying end offsets. Some partitions may be offline.");
-            for (final TopicPartition topicPartition : topicPartitions) {
-                final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(topicPartition);
-                topicPartitionData.setEndOffset(-1);
-                topicPartitionData.calculateLags();
-            }
+            setLagUnknown(topicPartitions, clusterData);
+            invalidateClients();
+        }
+    }
+
+    private static void setLagUnknown(final Set<TopicPartition> topicPartitions, final ClusterData clusterData) {
+        for (final TopicPartition topicPartition : topicPartitions) {
+            final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(topicPartition);
+            topicPartitionData.setEndOffset(-1);
+            topicPartitionData.calculateLags();
         }
     }
 
@@ -190,6 +208,27 @@ public final class ClusterLagCollector {
             consumer = new KafkaConsumer<>(consumerConfig);
         }
         return consumer;
+    }
+
+    private void invalidateClients() {
+        if (admin != null) {
+            try {
+                admin.close();
+            } catch (final Exception e) {
+                LOG.info("Error closing admin client (ignoring): " + e.getMessage());
+            } finally {
+                admin = null;
+            }
+        }
+        if (consumer != null) {
+            try {
+                consumer.close();
+            } catch (final Exception e) {
+                LOG.info("Error closing consumer client (ignoring): " + e.getMessage());
+            } finally {
+                consumer = null;
+            }
+        }
     }
 
 }
