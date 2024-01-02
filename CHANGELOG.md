@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.2](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.1...v0.4.2) (2024-01-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.16.1 ([#137](https://github.com/statnett/k3a-lag-exporter/issues/137)) ([f774e49](https://github.com/statnett/k3a-lag-exporter/commit/f774e49174e637b44dce94e8a14ecd438d02433e))
+* **deps:** update dependency org.slf4j:slf4j-api to v2.0.10 ([#140](https://github.com/statnett/k3a-lag-exporter/issues/140)) ([aca05f6](https://github.com/statnett/k3a-lag-exporter/commit/aca05f66a1099f29bb341f88dbc173d424b69531))
+* handle chained TimeoutException ([#141](https://github.com/statnett/k3a-lag-exporter/issues/141)) ([9dd4b10](https://github.com/statnett/k3a-lag-exporter/commit/9dd4b10cefd82d96a053b0c9978c513edc0fa41a))
+
 ## [0.4.1](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.0...v0.4.1) (2023-12-20)
 
 
