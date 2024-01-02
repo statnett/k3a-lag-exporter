@@ -79,12 +79,14 @@ public final class ClusterLagCollector {
             t = System.currentTimeMillis() - t;
             LOG.debug("Found all consumer group ids in " + t + " ms");
             return consumerGroupIds;
-        } catch (final TimeoutException e) {
-            LOG.warn("Got timeout while listing consumer groups.");
-            invalidateClients();
-            return consumerGroupIds;
         } catch (final Exception e) {
-            throw new RuntimeException(e);
+            if (isTimeout(e)) {
+                LOG.warn("Got timeout while listing consumer groups.");
+                invalidateClients();
+                return consumerGroupIds;
+            } else {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -181,10 +183,14 @@ public final class ClusterLagCollector {
                 topicPartitionData.setEndOffset(offset == null ? -1 : offset);
                 topicPartitionData.calculateLags();
             }
-        } catch (final TimeoutException e) {
-            LOG.warn("Got timeout while querying end offsets. Some partitions may be offline.");
-            setLagUnknown(topicPartitions, clusterData);
-            invalidateClients();
+        } catch (final Exception e) {
+            if (isTimeout(e)) {
+                LOG.warn("Got timeout while querying end offsets. Some partitions may be offline.");
+                setLagUnknown(topicPartitions, clusterData);
+                invalidateClients();
+            } else {
+                throw new RuntimeException(e);
+            }
         }
     }
 
@@ -229,6 +235,20 @@ public final class ClusterLagCollector {
                 consumer = null;
             }
         }
+    }
+
+    private static boolean isTimeout(final Throwable t) {
+        Throwable current = t;
+        while (current != null) {
+            if (TimeoutException.class.isAssignableFrom(current.getClass())) {
+                return true;
+            }
+            if (current == current.getCause()) {
+                break;
+            }
+            current = current.getCause();
+        }
+        return false;
     }
 
 }
