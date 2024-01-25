@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.4.3](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.2...v0.4.3) (2024-01-25)
+
+
+### Features
+
+* add k3a_consumergroup_group_offset metric ([#147](https://github.com/statnett/k3a-lag-exporter/issues/147)) ([8f44824](https://github.com/statnett/k3a-lag-exporter/commit/8f4482492d851ca780825f545e35bae1330cf50e))
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.slf4j:slf4j-api to v2.0.11 ([#143](https://github.com/statnett/k3a-lag-exporter/issues/143)) ([1bddf9a](https://github.com/statnett/k3a-lag-exporter/commit/1bddf9a59f88f83b76e7928c4208be875bdc43fc))
+
+
+### Documentation
+
+* add missing description of k3a_consumergroup_group_offset ([#148](https://github.com/statnett/k3a-lag-exporter/issues/148)) ([818c9ea](https://github.com/statnett/k3a-lag-exporter/commit/818c9ea8178169c7c660fe409cdc9b6580a5479f))
+
 ## [0.4.2](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.1...v0.4.2) (2024-01-02)
 
 
