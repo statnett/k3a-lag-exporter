@@ -14,6 +14,12 @@ The lag will be exported as a metric for Prometheus, like this:
 k3a_consumergroup_group_lag{cluster_name="the-cluster", group="the-group", partition="0", topic="the-topic"} 0
 ```
 
+Similarly, the current offset of each consumer group will be exported:
+
+```text
+k3a_consumergroup_group_offset{cluster_name="the-cluster", group="the-group", partition="0", topic="the-topic"} 0
+```
+
 There's also a metric reporting the time spent polling the cluster:
 
 ```text
