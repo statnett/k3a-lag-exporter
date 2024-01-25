@@ -16,6 +16,11 @@ public final class PrometheusReporter {
         .labelNames("cluster_name", "group", "topic", "partition" /*, "member_host", "consumer_id", "client_id" */)
         .help("Group offset lag of a partition")
         .register();
+    private final Gauge consumerGroupOffsetGauge = Gauge.builder()
+        .name(buildPrometheusFQName(PROMETHEUS_NAMESPACE, "consumergroup", "group_offset"))
+        .labelNames("cluster_name", "group", "topic", "partition" /*, "member_host", "consumer_id", "client_id" */)
+        .help("Group offset of a partition")
+        .register();
     private final Gauge pollTimeMsGauge = Gauge.builder()
         .name(buildPrometheusFQName(PROMETHEUS_NAMESPACE, "lag_exporter", "poll_time_ms"))
         .labelNames("cluster_name")
@@ -47,14 +52,19 @@ public final class PrometheusReporter {
             final String topic = topicPartitionData.getTopicPartition().topic();
             final String partition = String.valueOf(topicPartitionData.getTopicPartition().partition());
             for (final ConsumerGroupData consumerGroupData : topicPartitionData.getConsumerGroupDataMap().values()) {
-                final long lag = consumerGroupData.getLag();
-                if (lag < 0) {
-                    continue;
-                }
                 final String consumerGroupId = consumerGroupData.getConsumerGroupId();
-                consumerGroupLagGauge
-                    .labelValues(clusterName, consumerGroupId, topic, partition)
-                    .set(lag);
+                final long lag = consumerGroupData.getLag();
+                if (lag >= 0) {
+                    consumerGroupLagGauge
+                        .labelValues(clusterName, consumerGroupId, topic, partition)
+                        .set(lag);
+                }
+                final long offset = consumerGroupData.getOffset();
+                if (offset >= 0) {
+                    consumerGroupOffsetGauge
+                        .labelValues(clusterName, consumerGroupId, topic, partition)
+                        .set(offset);
+                }
             }
         }
     }

@@ -51,7 +51,7 @@ public final class K3aLagExporterIT {
     }
 
     @Test
-    public void shouldDetectLag() {
+    public void shouldDetectLagAndOffset() {
         lagCollector = new ClusterLagCollector(CLUSTER_NAME,
                                                null, null, null, null,
                                                getMinimalConsumerConfig(), getMinimalAdminConfig());
@@ -62,27 +62,42 @@ public final class K3aLagExporterIT {
                 int consumedValue = consume(consumer);
                 assertEquals(lastProducedValue, consumedValue);
                 assertLag(0);
+                assertOffset(1);
                 produce(producer);
                 assertLag(1);
+                assertOffset(1);
                 produce(producer);
                 assertLag(2);
+                assertOffset(1);
                 produce(producer);
                 assertLag(3);
+                assertOffset(1);
                 do {
                     consumedValue = consume(consumer);
                 } while (consumedValue < lastProducedValue);
                 assertLag(0);
+                assertOffset(4);
             }
         }
     }
 
-    private void assertLag(final int expected) {
+    private void assertLag(final long expected) {
+        final ConsumerGroupData consumerGroupData = getCurrentConsumerGroupData();
+        assertEquals(expected, consumerGroupData.getLag());
+    }
+
+    private void assertOffset(final long expected) {
+        final ConsumerGroupData consumerGroupData = getCurrentConsumerGroupData();
+        assertEquals(expected, consumerGroupData.getOffset());
+    }
+
+    private static ConsumerGroupData getCurrentConsumerGroupData() {
         final ClusterData clusterData = lagCollector.collectClusterData();
         final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(new TopicPartition(TOPIC, 0));
         assertNotNull(topicPartitionData);
         final ConsumerGroupData consumerGroupData = topicPartitionData.findConsumerGroupData(CONSUMER_GROUP_ID);
         assertNotNull(consumerGroupData);
-        assertEquals(expected, consumerGroupData.getLag(), 0.00001);
+        return consumerGroupData;
     }
 
     private void produce(final Producer<Integer, String> producer) {
