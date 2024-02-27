@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.4](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.3...v0.4.4) (2024-02-27)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.0 ([#153](https://github.com/statnett/k3a-lag-exporter/issues/153)) ([4fa3b73](https://github.com/statnett/k3a-lag-exporter/commit/4fa3b737331a34858f33db723c293d30816ac10e))
+* **deps:** update dependency org.apache.kafka:kafka-clients to v3.7.0 ([#155](https://github.com/statnett/k3a-lag-exporter/issues/155)) ([315b934](https://github.com/statnett/k3a-lag-exporter/commit/315b934488bfb7d00f799ab2da2ee80610246dfe))
+* **deps:** update dependency org.junit:junit-bom to v5.10.2 ([#150](https://github.com/statnett/k3a-lag-exporter/issues/150)) ([4d72143](https://github.com/statnett/k3a-lag-exporter/commit/4d72143a49f03de4a153510b028ed0d4880c7002))
+* **deps:** update dependency org.slf4j:slf4j-api to v2.0.12 ([#152](https://github.com/statnett/k3a-lag-exporter/issues/152)) ([ecbde04](https://github.com/statnett/k3a-lag-exporter/commit/ecbde0482e4569c37cba61345f69af0ca6376572))
+
 ## [0.4.3](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.2...v0.4.3) (2024-01-25)
 
 
