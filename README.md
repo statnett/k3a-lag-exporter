@@ -5,8 +5,8 @@ defined as the difference between the last produced index and the last
 consumed index.
 
 This implementation is intended to be run in a K8s-like environment,
-where pods are restarted on failure. Hence, any exception during
-runtime will make the application terminate.
+where pods are restarted on failure. Hence, non-retriable exceptions
+during runtime will make the application terminate.
 
 The lag will be exported as a metric for Prometheus, like this:
 
