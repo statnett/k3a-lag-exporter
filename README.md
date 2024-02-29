@@ -96,7 +96,7 @@ Filtering happens on the allow-list first, then the deny-list.
 * If an allow-list is given, only topics/consumer groups that match an
   entry in the list is passed on.
 
-* Otherwise. of no allow-list is given, every existing topic/consumer
+* Otherwise, if no allow-list is given, every existing topic/consumer
   group is passed on to the deny-list.
 
 * If a deny-list is given, any matching topic/consumer group will be
