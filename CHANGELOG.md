@@ -1,5 +1,23 @@
 # Changelog
 
+## [0.4.5](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.4...v0.4.5) (2024-04-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.1 ([#157](https://github.com/statnett/k3a-lag-exporter/issues/157)) ([ad94403](https://github.com/statnett/k3a-lag-exporter/commit/ad94403399478c90d4a707c9d2437913a1a37862))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.2 ([#161](https://github.com/statnett/k3a-lag-exporter/issues/161)) ([9e4dee6](https://github.com/statnett/k3a-lag-exporter/commit/9e4dee68389d337e997dcb14971fe8f640b937ab))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.3 ([#162](https://github.com/statnett/k3a-lag-exporter/issues/162)) ([8003dc0](https://github.com/statnett/k3a-lag-exporter/commit/8003dc07ad227bf63d5c9ec858dea981e40863bf))
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.16.2 ([#163](https://github.com/statnett/k3a-lag-exporter/issues/163)) ([1c3a0a5](https://github.com/statnett/k3a-lag-exporter/commit/1c3a0a5395330cb46736565fc41cd26d56f8b47c))
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.17.0 ([#167](https://github.com/statnett/k3a-lag-exporter/issues/167)) ([5b9ceac](https://github.com/statnett/k3a-lag-exporter/commit/5b9ceace7bd560dc63b96cec4781a4888009e853))
+* **deps:** update prometheus.version to v1.2.0 ([#173](https://github.com/statnett/k3a-lag-exporter/issues/173)) ([50500af](https://github.com/statnett/k3a-lag-exporter/commit/50500afaea0dac2eeaf458895b8ed1be698a5a82))
+
+
+### Documentation
+
+* clarifications about exceptions and termination ([#159](https://github.com/statnett/k3a-lag-exporter/issues/159)) ([4e88d0d](https://github.com/statnett/k3a-lag-exporter/commit/4e88d0d2c687cbb760d1c325fb4d2cbd61b87b27))
+* spelling in README ([#160](https://github.com/statnett/k3a-lag-exporter/issues/160)) ([5838830](https://github.com/statnett/k3a-lag-exporter/commit/58388301afa3165b7c6b0625c67fbc8efe186589))
+
 ## [0.4.4](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.3...v0.4.4) (2024-02-27)
 
 
