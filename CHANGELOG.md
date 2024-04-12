@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.6](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.5...v0.4.6) (2024-04-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.4 ([#177](https://github.com/statnett/k3a-lag-exporter/issues/177)) ([5ce19e1](https://github.com/statnett/k3a-lag-exporter/commit/5ce19e15bd86de95ef0899a949da70d47835dbf0))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.5 ([#179](https://github.com/statnett/k3a-lag-exporter/issues/179)) ([77b050f](https://github.com/statnett/k3a-lag-exporter/commit/77b050fa9df72869b4460a23a3c3886760301c7b))
+* **deps:** update dependency org.slf4j:slf4j-bom to v2.0.13 ([#178](https://github.com/statnett/k3a-lag-exporter/issues/178)) ([f028304](https://github.com/statnett/k3a-lag-exporter/commit/f028304bb8db4005508db312343fcd9740ee7b9d))
+* **deps:** update prometheus.version to v1.2.1 ([#175](https://github.com/statnett/k3a-lag-exporter/issues/175)) ([4162be0](https://github.com/statnett/k3a-lag-exporter/commit/4162be07127366577c085905ec01d80bfeba1869))
+
 ## [0.4.5](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.4...v0.4.5) (2024-04-02)
 
 
