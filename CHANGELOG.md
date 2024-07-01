@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.8](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.7...v0.4.8) (2024-07-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.apache.kafka:kafka-clients to v3.7.1 ([#192](https://github.com/statnett/k3a-lag-exporter/issues/192)) ([6cff9ee](https://github.com/statnett/k3a-lag-exporter/commit/6cff9ee71663aaeb5c15d3af63db06c85860eda1))
+* **deps:** update dependency org.junit:junit-bom to v5.10.3 ([#191](https://github.com/statnett/k3a-lag-exporter/issues/191)) ([ea53751](https://github.com/statnett/k3a-lag-exporter/commit/ea53751c48c5aa2896b9ff7583ba41f91c44f789))
+* **deps:** update prometheus.version to v1.3.0 ([#186](https://github.com/statnett/k3a-lag-exporter/issues/186)) ([a24dbc1](https://github.com/statnett/k3a-lag-exporter/commit/a24dbc1f40de6b89e294251a52215ea7e1fc35ba))
+* **deps:** update prometheus.version to v1.3.1 ([#188](https://github.com/statnett/k3a-lag-exporter/issues/188)) ([4ccabe1](https://github.com/statnett/k3a-lag-exporter/commit/4ccabe14ad41afee3b2403ae7e57fda9812bc077))
+
 ## [0.4.7](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.6...v0.4.7) (2024-05-06)
 
 
