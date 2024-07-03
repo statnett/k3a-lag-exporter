@@ -8,7 +8,6 @@ import java.util.Map;
 public final class TopicPartitionData {
 
     private final TopicPartition topicPartition;
-    private long endOffset = -1;
     private int numReplicas = -1;
     private final Map<String, ConsumerGroupData> consumerGroupDataMap = new HashMap<>();
 
@@ -18,14 +17,6 @@ public final class TopicPartitionData {
 
     public TopicPartition getTopicPartition() {
         return topicPartition;
-    }
-
-    public long getEndOffset() {
-        return endOffset;
-    }
-
-    public void setEndOffset(final long endOffset) {
-        this.endOffset = endOffset;
     }
 
     public int getNumReplicas() {
@@ -46,7 +37,11 @@ public final class TopicPartitionData {
         }
     }
 
-    public void calculateLags() {
+    public void resetLags() {
+        calculateLags(-1);
+    }
+
+    public void calculateLags(final long endOffset) {
         synchronized (consumerGroupDataMap) {
             for (final ConsumerGroupData consumerGroupData : consumerGroupDataMap.values()) {
                 if (endOffset < 0) {

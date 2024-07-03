@@ -11,14 +11,16 @@ final class MainLagExporterLoop {
     public void runLoop() {
         try {
             final long msBetweenCollections = Conf.getPollIntervalMs();
-            LOG.info("Starting polling every " + msBetweenCollections + " ms");
+            LOG.info("Starting polling every {} ms", msBetweenCollections);
             final PrometheusReporter prometheusReporter = new PrometheusReporter();
             prometheusReporter.start();
-            final ClusterLagCollector collector = new ClusterLagCollector(Conf.getClusterName(),
-                                                                          Conf.getTopicAllowList(), Conf.getTopicDenyList(),
-                                                                          Conf.getConsumerGroupAllowList(), Conf.getConsumerGroupDenyList(),
-                                                                          Conf.getConsumerConfig(), Conf.getAdminConfig());
-            for (;;) {
+            final ClusterLagCollector collector = new ClusterLagCollector(
+                Conf.getClusterName(),
+                Conf.getTopicAllowList(), Conf.getTopicDenyList(),
+                Conf.getConsumerGroupAllowList(), Conf.getConsumerGroupDenyList(),
+                new ClusterClient(Conf.getAdminConfig(), Conf.getConsumerConfig())
+            );
+            for (; ; ) {
                 long t = System.currentTimeMillis();
                 final ClusterData clusterData = collector.collectClusterData();
                 prometheusReporter.publish(clusterData);
