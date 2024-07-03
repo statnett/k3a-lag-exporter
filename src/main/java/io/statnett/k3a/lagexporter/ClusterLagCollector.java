@@ -7,13 +7,11 @@ import io.statnett.k3a.lagexporter.utils.RegexStringListFilter;
 import org.apache.kafka.clients.admin.Admin;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.ConsumerGroupListing;
-import org.apache.kafka.clients.admin.ListConsumerGroupOffsetsResult;
 import org.apache.kafka.clients.admin.ListConsumerGroupOffsetsSpec;
 import org.apache.kafka.clients.admin.ListConsumerGroupsResult;
 import org.apache.kafka.clients.admin.TopicDescription;
 import org.apache.kafka.clients.consumer.Consumer;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
-import org.apache.kafka.clients.consumer.OffsetAndMetadata;
 import org.apache.kafka.common.TopicPartition;
 import org.apache.kafka.common.TopicPartitionInfo;
 import org.apache.kafka.common.errors.TimeoutException;
@@ -96,28 +94,23 @@ public final class ClusterLagCollector {
         }
         try {
             long t = System.currentTimeMillis();
-            final ListConsumerGroupOffsetsResult listConsumerGroupOffsetsResult = admin.listConsumerGroupOffsets(toMapForAllOffsets(consumerGroupIds));
-            for (final Map.Entry<String, Map<TopicPartition, OffsetAndMetadata>> all : listConsumerGroupOffsetsResult.all().get().entrySet()) {
-                final String consumerGroupId = all.getKey();
-                for (final Map.Entry<TopicPartition, OffsetAndMetadata> partitionOffsetAndMetadataEntry : all.getValue().entrySet()) {
-                    final TopicPartition partition = partitionOffsetAndMetadataEntry.getKey();
+            admin.listConsumerGroupOffsets(toMapForAllOffsets(consumerGroupIds)).all().get()
+                .forEach((consumerGroup, offsets) -> offsets.forEach((partition, offsetAndMetadata) -> {
                     final String topicName = partition.topic();
                     if (!topicFilter.isAllowed(topicName)) {
-                        continue;
+                        return;
                     }
-                    final OffsetAndMetadata data = partitionOffsetAndMetadataEntry.getValue();
-                    if (data == null) {
-                        LOG.info("No offset data for partition " + partition);
-                        continue;
+                    if (offsetAndMetadata == null) {
+                        LOG.info("No offset data for partition {}", partition);
+                        return;
                     }
                     final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(partition);
-                    final ConsumerGroupData consumerGroupData = topicPartitionData.findConsumerGroupData(consumerGroupId);
-                    consumerGroupData.setOffset(data.offset());
+                    final ConsumerGroupData consumerGroupData = topicPartitionData.findConsumerGroupData(consumerGroup);
+                    consumerGroupData.setOffset(offsetAndMetadata.offset());
                     topicPartitions.add(partition);
-                }
-            }
+                }));
             t = System.currentTimeMillis() - t;
-            LOG.debug("Found consumer group offsets in " + t + " ms");
+            LOG.debug("Found consumer group offsets in {} ms", t);
         } catch (final Exception e) {
             throw new RuntimeException(e);
         }
@@ -125,7 +118,7 @@ public final class ClusterLagCollector {
 
     private static Map<String, ListConsumerGroupOffsetsSpec> toMapForAllOffsets(final Set<String> consumerGroupIds) {
         final ListConsumerGroupOffsetsSpec spec = new ListConsumerGroupOffsetsSpec().topicPartitions(null);
-        final Map<String,ListConsumerGroupOffsetsSpec> map = new HashMap<>();
+        final Map<String, ListConsumerGroupOffsetsSpec> map = new HashMap<>();
         for (final String consumerGroupId : consumerGroupIds) {
             map.put(consumerGroupId, spec);
         }
@@ -175,14 +168,12 @@ public final class ClusterLagCollector {
 
     private void findEndOffsetsAndUpdateLagImpl(final Consumer<?, ?> consumer, final Set<TopicPartition> topicPartitions, final ClusterData clusterData) {
         try {
-            final Map<TopicPartition, Long> endOffsets = consumer.endOffsets(topicPartitions);
-            for (final Map.Entry<TopicPartition, Long> entry : endOffsets.entrySet()) {
-                final TopicPartition partition = entry.getKey();
-                final Long offset = entry.getValue();
-                final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(partition);
-                topicPartitionData.setEndOffset(offset == null ? -1 : offset);
-                topicPartitionData.calculateLags();
-            }
+            consumer.endOffsets(topicPartitions)
+                .forEach((partition, offset) -> {
+                    final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(partition);
+                    topicPartitionData.setEndOffset(offset == null ? -1 : offset);
+                    topicPartitionData.calculateLags();
+                });
         } catch (final Exception e) {
             if (isTimeout(e)) {
                 LOG.warn("Got timeout while querying end offsets. Some partitions may be offline.");
