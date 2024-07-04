@@ -23,7 +23,8 @@ import static io.statnett.k3a.lagexporter.utils.Exceptions.findTimeoutException;
 import static java.util.Collections.emptySet;
 import static java.util.function.Function.identity;
 
-public class ClusterClient {
+public final class ClusterClient {
+
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     private final Map<String, Object> adminConfig;
@@ -140,4 +141,5 @@ public class ClusterClient {
         }
         return consumer;
     }
+
 }
