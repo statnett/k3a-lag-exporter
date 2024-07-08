@@ -3,9 +3,10 @@ package io.statnett.k3a.lagexporter.utils;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.regex.Pattern;
 
-public final class RegexStringListFilter {
+public final class RegexStringListFilter implements Predicate<String> {
 
     private final List<Pattern> allowPatterns;
     private final List<Pattern> denyPatterns;
@@ -26,14 +27,16 @@ public final class RegexStringListFilter {
         return patterns;
     }
 
+    @Override
+    public boolean test(String s) {
+        return isAllowed(s);
+    }
+
     public boolean isAllowed(final String s) {
         if (allowPatterns != null && !matchesAny(allowPatterns, s)) {
             return false;
         }
-        if (denyPatterns != null && matchesAny(denyPatterns, s)) {
-            return false;
-        }
-        return true;
+        return denyPatterns == null || !matchesAny(denyPatterns, s);
     }
 
     private static boolean matchesAny(final List<Pattern> patterns, final String s) {
@@ -44,5 +47,4 @@ public final class RegexStringListFilter {
         }
         return false;
     }
-
 }

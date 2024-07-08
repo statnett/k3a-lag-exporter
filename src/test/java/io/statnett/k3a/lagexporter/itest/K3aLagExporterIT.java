@@ -1,5 +1,6 @@
 package io.statnett.k3a.lagexporter.itest;
 
+import io.statnett.k3a.lagexporter.ClusterClient;
 import io.statnett.k3a.lagexporter.ClusterLagCollector;
 import io.statnett.k3a.lagexporter.model.ClusterData;
 import io.statnett.k3a.lagexporter.model.ConsumerGroupData;
@@ -52,9 +53,11 @@ public final class K3aLagExporterIT {
 
     @Test
     public void shouldDetectLagAndOffset() {
-        lagCollector = new ClusterLagCollector(CLUSTER_NAME,
-                                               null, null, null, null,
-                                               getMinimalConsumerConfig(), getMinimalAdminConfig());
+        lagCollector = new ClusterLagCollector(
+            CLUSTER_NAME,
+            null, null, null, null,
+            new ClusterClient(getMinimalAdminConfig(), getMinimalConsumerConfig())
+        );
         try (final Producer<Integer, String> producer = new KafkaProducer<>(K3aTestUtils.producerProps(broker))) {
             try (final Consumer<Integer, String> consumer = new KafkaConsumer<>(K3aTestUtils.consumerProps(CONSUMER_GROUP_ID, false, broker))) {
                 consumer.subscribe(Collections.singleton(TOPIC));
@@ -119,7 +122,7 @@ public final class K3aLagExporterIT {
         int lastValue = -1;
         final ConsumerRecords<Integer, String> records = consumer.poll(Duration.ofMillis(1000));
         for (final ConsumerRecord<Integer, String> record : records) {
-            lastValue = Integer.valueOf(record.value());
+            lastValue = Integer.parseInt(record.value());
             consumer.commitAsync();
         }
         return lastValue;
