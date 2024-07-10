@@ -4,9 +4,9 @@ import io.prometheus.metrics.core.metrics.Gauge;
 import io.prometheus.metrics.exporter.httpserver.HTTPServer;
 import io.statnett.k3a.lagexporter.model.ClusterData;
 import io.statnett.k3a.lagexporter.model.ConsumerGroupData;
-import io.statnett.k3a.lagexporter.model.TopicPartitionData;
 
 import java.io.IOException;
+import java.util.List;
 
 public final class PrometheusReporter {
 
@@ -42,24 +42,24 @@ public final class PrometheusReporter {
     }
 
     public void publish(final ClusterData clusterData) {
-        final String clusterName = clusterData.getClusterName();
+        final String clusterName = clusterData.clusterName();
         publishConsumerGroupLag(clusterName, clusterData);
         publishPollTimeMs(clusterName, clusterData);
     }
 
     private void publishConsumerGroupLag(final String clusterName, final ClusterData clusterData) {
-        for (final TopicPartitionData topicPartitionData : clusterData.getAllTopicPartitionData()) {
-            final String topic = topicPartitionData.getTopicPartition().topic();
-            final String partition = String.valueOf(topicPartitionData.getTopicPartition().partition());
-            for (final ConsumerGroupData consumerGroupData : topicPartitionData.getConsumerGroupDataMap().values()) {
-                final String consumerGroupId = consumerGroupData.getConsumerGroupId();
-                final long lag = consumerGroupData.getLag();
+        for (final List<ConsumerGroupData> consumerGroupDataList : clusterData.topicAndConsumerData().values()) {
+            for (final ConsumerGroupData consumerGroupData : consumerGroupDataList) {
+                final String topic = consumerGroupData.topicPartition().topic();
+                final String partition = String.valueOf(consumerGroupData.topicPartition().partition());
+                final String consumerGroupId = consumerGroupData.consumerGroupId();
+                final long lag = consumerGroupData.lag();
                 if (lag >= 0) {
                     consumerGroupLagGauge
                         .labelValues(clusterName, consumerGroupId, topic, partition)
                         .set(lag);
                 }
-                final long offset = consumerGroupData.getOffset();
+                final long offset = consumerGroupData.offset();
                 if (offset >= 0) {
                     consumerGroupOffsetGauge
                         .labelValues(clusterName, consumerGroupId, topic, partition)
@@ -70,10 +70,10 @@ public final class PrometheusReporter {
     }
 
     private void publishPollTimeMs(final String clusterName, final ClusterData clusterData) {
-        if (clusterData.getPollTimeMs() >= 0L) {
+        if (clusterData.pollTimeMs() >= 0L) {
             pollTimeMsGauge
                 .labelValues(clusterName)
-                .set(clusterData.getPollTimeMs());
+                .set(clusterData.pollTimeMs());
         }
     }
 

@@ -2,9 +2,9 @@ package io.statnett.k3a.lagexporter.model;
 
 import org.apache.kafka.common.TopicPartition;
 
-public record TopicPartitionData(
+public record ConsumerGroupOffset(
     TopicPartition topicPartition,
-    long endOffset,
-    int numReplicas
+    String consumerGroupId,
+    long offset
 ) {
 }
