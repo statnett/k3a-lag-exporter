@@ -1,33 +1,28 @@
 package io.statnett.k3a.lagexporter.model;
 
-public final class ConsumerGroupData {
+import org.apache.kafka.common.TopicPartition;
 
-    private final String consumerGroupId;
-    private long offset = -1;
-    private long lag = -1;
+public record ConsumerGroupData(
+    TopicPartition topicPartition,
+    String consumerGroupId,
+    long offset,
+    long lag
+) {
 
-    ConsumerGroupData(final String consumerGroupId) {
-        this.consumerGroupId = consumerGroupId;
+    public ConsumerGroupData(ConsumerGroupOffset consumerGroupOffset, long endOffset) {
+        this(
+            consumerGroupOffset.topicPartition(),
+            consumerGroupOffset.consumerGroupId(),
+            consumerGroupOffset.offset(),
+            calculateLag(consumerGroupOffset, endOffset)
+        );
     }
 
-    public String getConsumerGroupId() {
-        return consumerGroupId;
+    private static long calculateLag(ConsumerGroupOffset consumerGroupOffset, long endOffset) {
+        if (endOffset < 0) {
+            return -1;
+        } else {
+            return Math.max(0, endOffset - consumerGroupOffset.offset());
+        }
     }
-
-    public long getOffset() {
-        return offset;
-    }
-
-    public void setOffset(final long offset) {
-        this.offset = offset;
-    }
-
-    public long getLag() {
-        return lag;
-    }
-
-    public void setLag(final long lag) {
-        this.lag = lag;
-    }
-
 }

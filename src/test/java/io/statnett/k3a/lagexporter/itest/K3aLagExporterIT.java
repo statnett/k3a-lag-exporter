@@ -26,10 +26,12 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public final class K3aLagExporterIT {
 
@@ -86,21 +88,27 @@ public final class K3aLagExporterIT {
 
     private void assertLag(final long expected) {
         final ConsumerGroupData consumerGroupData = getCurrentConsumerGroupData();
-        assertEquals(expected, consumerGroupData.getLag());
+        assertEquals(expected, consumerGroupData.lag());
     }
 
     private void assertOffset(final long expected) {
         final ConsumerGroupData consumerGroupData = getCurrentConsumerGroupData();
-        assertEquals(expected, consumerGroupData.getOffset());
+        assertEquals(expected, consumerGroupData.offset());
     }
 
     private static ConsumerGroupData getCurrentConsumerGroupData() {
         final ClusterData clusterData = lagCollector.collectClusterData();
-        final TopicPartitionData topicPartitionData = clusterData.findTopicPartitionData(new TopicPartition(TOPIC, 0));
+        final Optional<TopicPartitionData> topicPartitionData = clusterData.topicAndConsumerData().keySet().stream()
+            .filter(e -> e.topicPartition().equals(new TopicPartition(TOPIC, 0)))
+            .findFirst();
         assertNotNull(topicPartitionData);
-        final ConsumerGroupData consumerGroupData = topicPartitionData.findConsumerGroupData(CONSUMER_GROUP_ID);
+        assertTrue(topicPartitionData.isPresent());
+        final Optional<ConsumerGroupData> consumerGroupData = clusterData.topicAndConsumerData().get(topicPartitionData.get()).stream()
+            .filter(c -> c.consumerGroupId().equals(CONSUMER_GROUP_ID))
+            .findFirst();
         assertNotNull(consumerGroupData);
-        return consumerGroupData;
+        assertTrue(consumerGroupData.isPresent());
+        return consumerGroupData.orElse(null);
     }
 
     private void produce(final Producer<Integer, String> producer) {
