@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.9](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.8...v0.4.9) (2024-07-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.17.2 ([#196](https://github.com/statnett/k3a-lag-exporter/issues/196)) ([e8ee8fd](https://github.com/statnett/k3a-lag-exporter/commit/e8ee8fda1aa84df7d29c909a719634962977eec4))
+* **deps:** update dependency net.logstash.logback:logstash-logback-encoder to v8 ([#202](https://github.com/statnett/k3a-lag-exporter/issues/202)) ([cf58231](https://github.com/statnett/k3a-lag-exporter/commit/cf58231226c7a2a1cea8b63d0d40ada5d4942e36))
+* **deps:** update dependency org.apache.kafka:kafka-clients to v3.8.0 ([#201](https://github.com/statnett/k3a-lag-exporter/issues/201)) ([2180512](https://github.com/statnett/k3a-lag-exporter/commit/2180512556b8567097663137beff568c6c8d73b4))
+
 ## [0.4.8](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.7...v0.4.8) (2024-07-01)
 
 
