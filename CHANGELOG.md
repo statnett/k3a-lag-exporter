@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.10](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.9...v0.4.10) (2024-08-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.slf4j:slf4j-bom to v2.0.14 ([#204](https://github.com/statnett/k3a-lag-exporter/issues/204)) ([e462826](https://github.com/statnett/k3a-lag-exporter/commit/e462826f31d9b43aa9fe0f078f5748e366932f05))
+
 ## [0.4.9](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.8...v0.4.9) (2024-07-29)
 
 
