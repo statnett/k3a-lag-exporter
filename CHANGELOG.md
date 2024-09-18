@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.11](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.10...v0.4.11) (2024-09-18)
+
+
+### Bug Fixes
+
+* avoid NullPointerException ([#215](https://github.com/statnett/k3a-lag-exporter/issues/215)) ([c058d79](https://github.com/statnett/k3a-lag-exporter/commit/c058d79da27f0c4acb6893b281f985eb685f0c64))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.7 ([#209](https://github.com/statnett/k3a-lag-exporter/issues/209)) ([6e95031](https://github.com/statnett/k3a-lag-exporter/commit/6e95031e449707bcb67ac53bc94f4f99fcb02171))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.8 ([#213](https://github.com/statnett/k3a-lag-exporter/issues/213)) ([f1d5402](https://github.com/statnett/k3a-lag-exporter/commit/f1d5402ab41a9d273ecb913740e8bab9b567d02d))
+
 ## [0.4.10](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.9...v0.4.10) (2024-08-14)
 
 
