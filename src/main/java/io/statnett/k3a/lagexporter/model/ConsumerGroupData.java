@@ -9,7 +9,7 @@ public record ConsumerGroupData(
     long lag
 ) {
 
-    public ConsumerGroupData(ConsumerGroupOffset consumerGroupOffset, long endOffset) {
+    public ConsumerGroupData(final ConsumerGroupOffset consumerGroupOffset, final long endOffset) {
         this(
             consumerGroupOffset.topicPartition(),
             consumerGroupOffset.consumerGroupId(),
@@ -18,7 +18,7 @@ public record ConsumerGroupData(
         );
     }
 
-    private static long calculateLag(ConsumerGroupOffset consumerGroupOffset, long endOffset) {
+    private static long calculateLag(final ConsumerGroupOffset consumerGroupOffset, final long endOffset) {
         if (endOffset < 0) {
             return -1;
         } else {

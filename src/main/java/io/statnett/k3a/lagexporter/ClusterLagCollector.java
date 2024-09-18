@@ -59,7 +59,7 @@ public final class ClusterLagCollector {
     }
 
     private Map<TopicPartition, List<ConsumerGroupOffset>> findConsumerGroupOffsets(final Set<String> consumerGroupIds) {
-        Set<ConsumerGroupOffset> consumerGroupOffsetSet = new HashSet<>();
+        final Set<ConsumerGroupOffset> consumerGroupOffsetSet = new HashSet<>();
         client.consumerGroupOffsets(consumerGroupIds)
             .forEach((consumerGroup, offsets) -> offsets.forEach((partition, offsetAndMetadata) -> {
                 final String topicName = partition.topic();
@@ -76,10 +76,10 @@ public final class ClusterLagCollector {
     }
 
     private Map<TopicPartition, TopicPartitionData> findTopicPartitionData(final Set<TopicPartition> topicPartitions) {
-        Map<TopicPartition, Integer> replicaCounts = findReplicaCounts(topicPartitions);
-        Map<TopicPartition, Long> endOffsets = findEndOffsets(topicPartitions);
-        HashMap<TopicPartition, TopicPartitionData> topicPartitionData = new HashMap<>();
-        for(TopicPartition topicPartition : topicPartitions) {
+        final Map<TopicPartition, Integer> replicaCounts = findReplicaCounts(topicPartitions);
+        final Map<TopicPartition, Long> endOffsets = findEndOffsets(topicPartitions);
+        final HashMap<TopicPartition, TopicPartitionData> topicPartitionData = new HashMap<>();
+        for (final TopicPartition topicPartition : topicPartitions) {
             topicPartitionData.put(topicPartition, new TopicPartitionData(topicPartition, endOffsets.get(topicPartition), replicaCounts.get(topicPartition)));
         }
         return Collections.unmodifiableMap(topicPartitionData);
@@ -87,7 +87,7 @@ public final class ClusterLagCollector {
 
     private Map<TopicPartition, Integer> findReplicaCounts(final Set<TopicPartition> topicPartitions) {
         final Map<TopicPartition, Integer> replicaCounts = new HashMap<>();
-        Set<String> topics = topicPartitions.stream()
+        final Set<String> topics = topicPartitions.stream()
             .map(TopicPartition::topic)
             .collect(Collectors.toSet());
         client.describeTopics(topics).values()
@@ -106,9 +106,7 @@ public final class ClusterLagCollector {
         final Map<TopicPartition, Long> endOffsets = new HashMap<>();
         try {
             client.endOffsets(topicPartitions)
-                .forEach((partition, offset) -> {
-                    endOffsets.put(partition, (offset == null ? -1 : offset));
-                });
+                .forEach((partition, offset) -> endOffsets.put(partition, (offset == null ? -1 : offset)));
         } catch (final TimeoutException e) {
             LOG.debug("Timed out getting endOffsets");
         }
@@ -118,14 +116,14 @@ public final class ClusterLagCollector {
     }
 
     private static Map<TopicPartitionData, List<ConsumerGroupData>> calculateLag(
-        Map<TopicPartition, List<ConsumerGroupOffset>> consumerGroupOffsets,
-        Map<TopicPartition, TopicPartitionData> topicPartitionData
+    final Map<TopicPartition, List<ConsumerGroupOffset>> consumerGroupOffsets,
+    final Map<TopicPartition, TopicPartitionData> topicPartitionData
     ) {
-        Map<TopicPartitionData, List<ConsumerGroupData>> topicAndConsumerData = new HashMap<>();
-        for (Map.Entry<TopicPartition, List<ConsumerGroupOffset>> entry : consumerGroupOffsets.entrySet()) {
-            TopicPartitionData partitionData = topicPartitionData.get(entry.getKey());
-            List<ConsumerGroupData> consumerGroupData = new ArrayList<>(entry.getValue().size());
-            for(ConsumerGroupOffset consumerGroupOffset : entry.getValue()) {
+        final Map<TopicPartitionData, List<ConsumerGroupData>> topicAndConsumerData = new HashMap<>();
+        for (final Map.Entry<TopicPartition, List<ConsumerGroupOffset>> entry : consumerGroupOffsets.entrySet()) {
+            final TopicPartitionData partitionData = topicPartitionData.get(entry.getKey());
+            final List<ConsumerGroupData> consumerGroupData = new ArrayList<>(entry.getValue().size());
+            for (final ConsumerGroupOffset consumerGroupOffset : entry.getValue()) {
                 consumerGroupData.add(new ConsumerGroupData(consumerGroupOffset, partitionData.endOffset()));
             }
             topicAndConsumerData.put(partitionData, consumerGroupData);

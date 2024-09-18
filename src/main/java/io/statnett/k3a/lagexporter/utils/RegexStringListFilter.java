@@ -28,7 +28,7 @@ public final class RegexStringListFilter implements Predicate<String> {
     }
 
     @Override
-    public boolean test(String s) {
+    public boolean test(final String s) {
         return isAllowed(s);
     }
 
