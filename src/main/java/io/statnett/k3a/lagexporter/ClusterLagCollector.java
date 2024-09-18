@@ -80,7 +80,9 @@ public final class ClusterLagCollector {
         final Map<TopicPartition, Long> endOffsets = findEndOffsets(topicPartitions);
         final HashMap<TopicPartition, TopicPartitionData> topicPartitionData = new HashMap<>();
         for (final TopicPartition topicPartition : topicPartitions) {
-            topicPartitionData.put(topicPartition, new TopicPartitionData(topicPartition, endOffsets.get(topicPartition), replicaCounts.get(topicPartition)));
+            final Long endOffset = endOffsets.get(topicPartition);
+            final Integer numReplicas = replicaCounts.get(topicPartition);
+            topicPartitionData.put(topicPartition, new TopicPartitionData(topicPartition, endOffset == null ? -1 : endOffset, numReplicas == null ? -1 : numReplicas));
         }
         return Collections.unmodifiableMap(topicPartitionData);
     }
