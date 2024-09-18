@@ -33,7 +33,7 @@ public final class ClusterClient {
     private Admin admin;
     private Consumer<?, ?> consumer;
 
-    public ClusterClient(Map<String, Object> adminConfig, Map<String, Object> consumerConfig) {
+    public ClusterClient(final Map<String, Object> adminConfig, final Map<String, Object> consumerConfig) {
         this.adminConfig = adminConfig;
         this.consumerConfig = consumerConfig;
     }
@@ -42,7 +42,7 @@ public final class ClusterClient {
         try {
             return getConsumer().endOffsets(topicPartitions);
         } catch (final RuntimeException e) {
-            TimeoutException timeoutException = findTimeoutException(e);
+            final TimeoutException timeoutException = findTimeoutException(e);
             if (timeoutException != null) {
                 log.warn("Got timeout while querying end offsets. Some partitions may be offline.");
                 close();
@@ -61,7 +61,7 @@ public final class ClusterClient {
                 .filter(filter)
                 .collect(Collectors.toSet());
         } catch (final Exception e) {
-            TimeoutException timeoutException = findTimeoutException(e);
+            final TimeoutException timeoutException = findTimeoutException(e);
             if (timeoutException != null) {
                 log.warn("Got timeout while querying end offsets. Some partitions may be offline.");
                 close();
@@ -81,7 +81,7 @@ public final class ClusterClient {
         }
         long t = System.currentTimeMillis();
         try {
-            Map<String, ListConsumerGroupOffsetsSpec> groupSpecs = consumerGroupIds.stream()
+            final Map<String, ListConsumerGroupOffsetsSpec> groupSpecs = consumerGroupIds.stream()
                 .collect(Collectors.toMap(identity(), s -> new ListConsumerGroupOffsetsSpec().topicPartitions(null)));
             return admin.listConsumerGroupOffsets(groupSpecs).all().get();
         } catch (final Exception e) {
