@@ -54,7 +54,11 @@ public final class ClusterLagCollector {
             pollTimeMs = -1;
         }
         final ClusterData clusterData = new ClusterData(clusterName, topicAndConsumerData, pollTimeMs);
-        LOG.info("Polled lag data for {} in {} ms", clusterName, pollTimeMs);
+        if (allConsumerGroupIds.isEmpty()) {
+            LOG.info("No consumer groups found; nothing to do.");
+        } else {
+            LOG.info("Polled lag data for {} in {} ms", clusterName, pollTimeMs);
+        }
         return clusterData;
     }
 
