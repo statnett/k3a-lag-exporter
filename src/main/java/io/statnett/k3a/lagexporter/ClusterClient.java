@@ -83,7 +83,7 @@ public final class ClusterClient {
         try {
             final Map<String, ListConsumerGroupOffsetsSpec> groupSpecs = consumerGroupIds.stream()
                 .collect(Collectors.toMap(identity(), s -> new ListConsumerGroupOffsetsSpec().topicPartitions(null)));
-            return admin.listConsumerGroupOffsets(groupSpecs).all().get();
+            return getAdmin().listConsumerGroupOffsets(groupSpecs).all().get();
         } catch (final Exception e) {
             throw new RuntimeException(e);
         } finally {
