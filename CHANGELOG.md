@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.12](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.11...v0.4.12) (2024-09-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.18.0 ([#219](https://github.com/statnett/k3a-lag-exporter/issues/219)) ([7fd821d](https://github.com/statnett/k3a-lag-exporter/commit/7fd821d2877875d3fbae9911980bded17362a245))
+* **deps:** update dependency org.junit:junit-bom to v5.11.1 ([#217](https://github.com/statnett/k3a-lag-exporter/issues/217)) ([493d001](https://github.com/statnett/k3a-lag-exporter/commit/493d001b9b7fe5e198e39cbf8847adcd38e63825))
+* use getAdmin instead of admin to ensure object is created ([#220](https://github.com/statnett/k3a-lag-exporter/issues/220)) ([66a3636](https://github.com/statnett/k3a-lag-exporter/commit/66a3636ac60de108059a665eda267df3d3f70e7a))
+
 ## [0.4.11](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.10...v0.4.11) (2024-09-18)
 
 
