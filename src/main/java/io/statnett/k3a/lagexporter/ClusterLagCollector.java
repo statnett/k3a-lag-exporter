@@ -41,16 +41,20 @@ public final class ClusterLagCollector {
     }
 
     public ClusterData collectClusterData() {
-        final boolean clientConnected = client.isConnected();
+        final boolean clientWasAlreadyConnected = client.isConnected();
         final long startMs = System.currentTimeMillis();
         final Set<String> allConsumerGroupIds = client.consumerGroupIds(consumerGroupFilter);
         final Map<TopicPartition, List<ConsumerGroupOffset>> groupOffsets = findConsumerGroupOffsets(allConsumerGroupIds);
         final Map<TopicPartition, TopicPartitionData> topicPartitionData = findTopicPartitionData(groupOffsets.keySet());
         final Map<TopicPartitionData, List<ConsumerGroupData>> topicAndConsumerData = calculateLag(groupOffsets, topicPartitionData);
         final long pollTimeMs;
-        if (clientConnected) {
+        if (clientWasAlreadyConnected) {
             pollTimeMs = System.currentTimeMillis() - startMs;
         } else {
+            /* The first cluster data collection after connecting takes an order of magnitude longer
+             * than the runs that come after. If we publish this metric, graphs in Prometheus will
+             * be scaled to a range that makes it impossible to see variations in the actual
+             * collection times. Thus, clamp it down. */
             pollTimeMs = -1;
         }
         final ClusterData clusterData = new ClusterData(clusterName, topicAndConsumerData, pollTimeMs);
