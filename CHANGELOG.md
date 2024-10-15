@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.14](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.13...v0.4.14) (2024-10-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.10 ([#229](https://github.com/statnett/k3a-lag-exporter/issues/229)) ([074bc44](https://github.com/statnett/k3a-lag-exporter/commit/074bc4448481928d1ba046c50640cc89cf7508e5))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.11 ([#231](https://github.com/statnett/k3a-lag-exporter/issues/231)) ([1dd1857](https://github.com/statnett/k3a-lag-exporter/commit/1dd1857c7463f856b47bb6ca93f1d382a562c1a2))
+
 ## [0.4.13](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.12...v0.4.13) (2024-10-08)
 
 
