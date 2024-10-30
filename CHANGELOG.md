@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.17](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.16...v0.4.17) (2024-10-30)
+
+
+### Bug Fixes
+
+* update kafka-clients to v3.8.1 ([#243](https://github.com/statnett/k3a-lag-exporter/issues/243)) ([85882f1](https://github.com/statnett/k3a-lag-exporter/commit/85882f18576feb0e6ad6fa0c91b01008d862784d))
+
 ## [0.4.16](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.15...v0.4.16) (2024-10-29)
 
 
