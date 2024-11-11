@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.18](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.17...v0.4.18) (2024-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.apache.kafka:kafka-clients to v3.9.0 ([#247](https://github.com/statnett/k3a-lag-exporter/issues/247)) ([0faf982](https://github.com/statnett/k3a-lag-exporter/commit/0faf982d618eb87218bdde99c2bd275a9bdd7d50))
+* **deps:** update prometheus.version to v1.3.3 ([#248](https://github.com/statnett/k3a-lag-exporter/issues/248)) ([c9becba](https://github.com/statnett/k3a-lag-exporter/commit/c9becbaaa2c036b0556c4be7a67653a4690e1fc0))
+
 ## [0.4.17](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.16...v0.4.17) (2024-10-30)
 
 
