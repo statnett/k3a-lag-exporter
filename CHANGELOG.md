@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.19](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.18...v0.4.19) (2024-11-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency io.prometheus:prometheus-metrics-exporter-httpserver to v1.3.4 ([#252](https://github.com/statnett/k3a-lag-exporter/issues/252)) ([1526e52](https://github.com/statnett/k3a-lag-exporter/commit/1526e523eba550a5f02004bca6e652c2f8fe3610))
+
 ## [0.4.18](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.17...v0.4.18) (2024-11-11)
 
 
