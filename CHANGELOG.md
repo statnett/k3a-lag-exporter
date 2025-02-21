@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.24](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.23...v0.4.24) (2025-02-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency io.prometheus:prometheus-metrics-exporter-httpserver to v1.3.6 ([#271](https://github.com/statnett/k3a-lag-exporter/issues/271)) ([83e1be3](https://github.com/statnett/k3a-lag-exporter/commit/83e1be34bb2195926ae929338ee0ba4226931719))
+* **deps:** update dependency org.junit:junit-bom to v5.12.0 ([#274](https://github.com/statnett/k3a-lag-exporter/issues/274)) ([3ec7841](https://github.com/statnett/k3a-lag-exporter/commit/3ec78411d6dfe453a389e1843d2a98aae1754491))
+
 ## [0.4.23](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.22...v0.4.23) (2025-01-06)
 
 
