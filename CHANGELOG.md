@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.4.25](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.24...v0.4.25) (2025-03-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.17 ([#276](https://github.com/statnett/k3a-lag-exporter/issues/276)) ([617307e](https://github.com/statnett/k3a-lag-exporter/commit/617307e9e6e8b8b5b7c7c69ec9e219b098ef0a03))
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.18.3 ([#279](https://github.com/statnett/k3a-lag-exporter/issues/279)) ([38b3094](https://github.com/statnett/k3a-lag-exporter/commit/38b30949bbc454b89f3851e0c8d090b711c28500))
+* **deps:** update dependency org.junit:junit-bom to v5.12.1 ([#280](https://github.com/statnett/k3a-lag-exporter/issues/280)) ([3b85a0c](https://github.com/statnett/k3a-lag-exporter/commit/3b85a0c57c2a7097411c5196d813025f52c77327))
+* **deps:** update dependency org.slf4j:slf4j-bom to v2.0.17 ([#277](https://github.com/statnett/k3a-lag-exporter/issues/277)) ([9b1ebc1](https://github.com/statnett/k3a-lag-exporter/commit/9b1ebc1906a6c3b7cdc2c6173451693edb13e7b7))
+
 ## [0.4.24](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.23...v0.4.24) (2025-02-21)
 
 
