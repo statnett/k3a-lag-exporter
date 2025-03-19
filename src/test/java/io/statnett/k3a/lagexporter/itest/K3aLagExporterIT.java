@@ -131,7 +131,7 @@ public final class K3aLagExporterIT {
         final ConsumerRecords<Integer, String> records = consumer.poll(Duration.ofMillis(1000));
         for (final ConsumerRecord<Integer, String> record : records) {
             lastValue = Integer.parseInt(record.value());
-            consumer.commitAsync();
+            consumer.commitSync();
         }
         return lastValue;
     }
