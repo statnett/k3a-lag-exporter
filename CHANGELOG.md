@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.28](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.27...v0.4.28) (2025-04-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency net.logstash.logback:logstash-logback-encoder to v8.1 ([#290](https://github.com/statnett/k3a-lag-exporter/issues/290)) ([16b38a3](https://github.com/statnett/k3a-lag-exporter/commit/16b38a3fa30836831e815b7491b8bcb1a7950bba))
+
 ## [0.4.27](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.26...v0.4.27) (2025-03-19)
 
 
