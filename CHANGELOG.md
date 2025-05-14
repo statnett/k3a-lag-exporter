@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.31](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.30...v0.4.31) (2025-05-14)
+
+
+### Bug Fixes
+
+* **deps:** update prometheus.version to v1.3.7 ([#300](https://github.com/statnett/k3a-lag-exporter/issues/300)) ([6743cbc](https://github.com/statnett/k3a-lag-exporter/commit/6743cbcb55b7b862a6481e287ed0dca32b321417))
+
 ## [0.4.30](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.29...v0.4.30) (2025-04-25)
 
 
