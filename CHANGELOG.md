@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.4.33](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.32...v0.4.33) (2025-07-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.typesafe:config to v1.4.4 ([#314](https://github.com/statnett/k3a-lag-exporter/issues/314)) ([60ced2f](https://github.com/statnett/k3a-lag-exporter/commit/60ced2f23919cdc730cde0e53e506d45a21ef682))
+* **deps:** update dependency org.junit:junit-bom to v5.13.2 ([#309](https://github.com/statnett/k3a-lag-exporter/issues/309)) ([1f222bb](https://github.com/statnett/k3a-lag-exporter/commit/1f222bbb47a244c2c531cde3a05b855c1ae86b89))
+* **deps:** update dependency org.junit:junit-bom to v5.13.3 ([#311](https://github.com/statnett/k3a-lag-exporter/issues/311)) ([dec69c6](https://github.com/statnett/k3a-lag-exporter/commit/dec69c62e0e9f90181fcf679e1cbdb14148171d2))
+* **deps:** update prometheus.version to v1.3.10 ([#313](https://github.com/statnett/k3a-lag-exporter/issues/313)) ([b032e82](https://github.com/statnett/k3a-lag-exporter/commit/b032e82d31a3c69ad1ec80e4487d8cc0a5f218fe))
+* **deps:** update prometheus.version to v1.3.9 ([#312](https://github.com/statnett/k3a-lag-exporter/issues/312)) ([b44cbae](https://github.com/statnett/k3a-lag-exporter/commit/b44cbaee5333d46c0d3c78cb554d8f1578b90114))
+
 ## [0.4.32](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.31...v0.4.32) (2025-06-14)
 
 
