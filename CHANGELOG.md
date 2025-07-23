@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.34](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.33...v0.4.34) (2025-07-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.19.2 ([#316](https://github.com/statnett/k3a-lag-exporter/issues/316)) ([f5b5b80](https://github.com/statnett/k3a-lag-exporter/commit/f5b5b807996850599eecb07238e2f6570e52319e))
+* **deps:** update dependency org.junit:junit-bom to v5.13.4 ([#317](https://github.com/statnett/k3a-lag-exporter/issues/317)) ([d3d0eef](https://github.com/statnett/k3a-lag-exporter/commit/d3d0eefbd59716159c0ab503b6502e4d781cd1a6))
+
 ## [0.4.33](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.32...v0.4.33) (2025-07-15)
 
 
