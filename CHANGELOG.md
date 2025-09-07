@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.37](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.36...v0.4.37) (2025-09-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.apache.kafka:kafka-clients to v4.1.0 ([#329](https://github.com/statnett/k3a-lag-exporter/issues/329)) ([99a3582](https://github.com/statnett/k3a-lag-exporter/commit/99a35825c2cfd878e4d0eb888a903b4203d68c47))
+
 ## [0.4.36](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.35...v0.4.36) (2025-08-31)
 
 
