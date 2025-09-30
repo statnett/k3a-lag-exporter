@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.39](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.38...v0.4.39) (2025-09-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.19 ([#344](https://github.com/statnett/k3a-lag-exporter/issues/344)) ([09ba89c](https://github.com/statnett/k3a-lag-exporter/commit/09ba89cea5c023d6535d731016840e706b1749d3))
+* **deps:** update dependency org.junit:junit-bom to v6 ([#343](https://github.com/statnett/k3a-lag-exporter/issues/343)) ([0108a97](https://github.com/statnett/k3a-lag-exporter/commit/0108a9715f6291386e61c543f28f9fac460e01fd))
+
 ## [0.4.38](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.37...v0.4.38) (2025-09-16)
 
 
