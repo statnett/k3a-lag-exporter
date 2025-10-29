@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.41](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.40...v0.4.41) (2025-10-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency net.logstash.logback:logstash-logback-encoder to v9 ([#355](https://github.com/statnett/k3a-lag-exporter/issues/355)) ([66d0e93](https://github.com/statnett/k3a-lag-exporter/commit/66d0e9356de58b4b5cbade8166a10e6d03fd57e2))
+* **deps:** update prometheus.version to v1.4.2 ([#356](https://github.com/statnett/k3a-lag-exporter/issues/356)) ([e24d20d](https://github.com/statnett/k3a-lag-exporter/commit/e24d20d16cc634a87d98744b3d6a9f6b5ada951a))
+
 ## [0.4.40](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.39...v0.4.40) (2025-10-20)
 
 
