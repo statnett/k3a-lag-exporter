@@ -4,7 +4,7 @@
 
     <groupId>io.statnett.k3a</groupId>
     <artifactId>k3a-lag-exporter</artifactId>
-    <version>0.4.44-SNAPSHOT</version>
+    <version>0.4.44</version>
 
     <properties>
         <java.version>21</java.version>
