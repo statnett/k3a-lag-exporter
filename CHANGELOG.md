@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.44](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.43...v0.4.44) (2025-11-14)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.21 ([#372](https://github.com/statnett/k3a-lag-exporter/issues/372)) ([849d394](https://github.com/statnett/k3a-lag-exporter/commit/849d3943cb20e2c8834490cb327e5cbf399243fb))
+* **deps:** update dependency org.apache.kafka:kafka-clients to v4.1.1 ([#374](https://github.com/statnett/k3a-lag-exporter/issues/374)) ([797ada5](https://github.com/statnett/k3a-lag-exporter/commit/797ada55f76d35bfd5f9153f6bd5901efb55b496))
+
 ## [0.4.43](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.42...v0.4.43) (2025-11-09)
 
 
