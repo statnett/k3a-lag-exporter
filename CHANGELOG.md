@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.45](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.44...v0.4.45) (2025-11-15)
+
+
+### Features
+
+* upgrade Java to 25 ([#378](https://github.com/statnett/k3a-lag-exporter/issues/378)) ([e78993a](https://github.com/statnett/k3a-lag-exporter/commit/e78993a7742f8f1fbf145d61e166745bead1c8ab))
+
 ## [0.4.44](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.43...v0.4.44) (2025-11-14)
 
 
