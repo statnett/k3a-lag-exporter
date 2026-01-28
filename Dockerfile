@@ -6,7 +6,7 @@ RUN mvn dependency:resolve -DincludeScope=runtime
 COPY src/main src/main
 RUN mvn --batch-mode -Dmaven.test.skip=true package
 
-FROM eclipse-temurin:25-jre-alpine@sha256:b51543f89580c1ba70e441cfbc0cfc1635c3c16d2e2d77fec9d890342a3a8687
+FROM eclipse-temurin:25-jre-alpine@sha256:9c65fe190cb22ba92f50b8d29a749d0f1cfb2437e09fe5fbf9ff927c45fc6e99
 WORKDIR /app
 COPY --from=builder /workspace/target/k3a-lag-exporter-jar-with-dependencies.jar ./k3a-lag-exporter.jar
 RUN apk update \
