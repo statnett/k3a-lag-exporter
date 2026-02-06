@@ -1,5 +1,14 @@
 # Changelog
 
+## [0.4.50](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.49...v0.4.50) (2026-02-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.27 ([#412](https://github.com/statnett/k3a-lag-exporter/issues/412)) ([e6cb285](https://github.com/statnett/k3a-lag-exporter/commit/e6cb285bc28b097be6180bce97f33d71e7e8fb3b))
+* **deps:** update eclipse-temurin:25-jre-alpine docker digest to f10d625 ([#416](https://github.com/statnett/k3a-lag-exporter/issues/416)) ([374e363](https://github.com/statnett/k3a-lag-exporter/commit/374e36363faa89402b39dde1906576217c937278))
+* **deps:** update maven:3-eclipse-temurin-25 docker digest to d661040 ([#417](https://github.com/statnett/k3a-lag-exporter/issues/417)) ([b3548b8](https://github.com/statnett/k3a-lag-exporter/commit/b3548b8d444051edc9ebe8437d5f2a6b3f8c9fa7))
+
 ## [0.4.49](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.48...v0.4.49) (2026-01-26)
 
 
