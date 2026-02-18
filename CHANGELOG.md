@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.4.51](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.50...v0.4.51) (2026-02-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.28 ([#420](https://github.com/statnett/k3a-lag-exporter/issues/420)) ([c651da5](https://github.com/statnett/k3a-lag-exporter/commit/c651da581154517d8da14df8e26e022c53901e5f))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.29 ([#423](https://github.com/statnett/k3a-lag-exporter/issues/423)) ([a4c5811](https://github.com/statnett/k3a-lag-exporter/commit/a4c5811b05a294b22c97f5876fbdeba3e0fe5001))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.31 ([#428](https://github.com/statnett/k3a-lag-exporter/issues/428)) ([5247577](https://github.com/statnett/k3a-lag-exporter/commit/5247577a7da35a94dc4c5d10988579ac1ff9418c))
+* **deps:** update dependency ch.qos.logback:logback-classic to v1.5.32 ([#430](https://github.com/statnett/k3a-lag-exporter/issues/430)) ([61f569b](https://github.com/statnett/k3a-lag-exporter/commit/61f569b626fc2c8c87d3645e26d510e1eb3f392a))
+* **deps:** update dependency org.apache.kafka:kafka-clients to v4.2.0 ([#431](https://github.com/statnett/k3a-lag-exporter/issues/431)) ([2aeb542](https://github.com/statnett/k3a-lag-exporter/commit/2aeb5423a0b497392b98091ff837dd892d311da2))
+* **deps:** update dependency org.junit:junit-bom to v6.0.3 ([#429](https://github.com/statnett/k3a-lag-exporter/issues/429)) ([be04b20](https://github.com/statnett/k3a-lag-exporter/commit/be04b20ae4da6496514b97aab6e8b7def887dda5))
+* **deps:** update prometheus.version to v1.5.0 ([#427](https://github.com/statnett/k3a-lag-exporter/issues/427)) ([c08a48f](https://github.com/statnett/k3a-lag-exporter/commit/c08a48f8a9a535f984c1d814f0483c16834b3318))
+
 ## [0.4.50](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.49...v0.4.50) (2026-02-06)
 
 
