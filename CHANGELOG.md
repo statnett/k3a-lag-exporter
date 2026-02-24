@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.53](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.52...v0.4.53) (2026-02-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.typesafe:config to v1.4.6 ([#439](https://github.com/statnett/k3a-lag-exporter/issues/439)) ([3e937d0](https://github.com/statnett/k3a-lag-exporter/commit/3e937d00bfc93d22aadf6544f13e1f1bad6dcadf))
+
 ## [0.4.52](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.51...v0.4.52) (2026-02-23)
 
 
