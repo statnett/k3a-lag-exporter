@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.54](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.53...v0.4.54) (2026-03-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.21.2 ([#453](https://github.com/statnett/k3a-lag-exporter/issues/453)) ([e998360](https://github.com/statnett/k3a-lag-exporter/commit/e9983607f3c8aa5c8b22b3c56128be664904f0c0))
+* **deps:** update prometheus.version to v1.5.1 ([#452](https://github.com/statnett/k3a-lag-exporter/issues/452)) ([956a71e](https://github.com/statnett/k3a-lag-exporter/commit/956a71e2ddb307199dd4442d154c13b2c33aa0a4))
+
 ## [0.4.53](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.52...v0.4.53) (2026-02-24)
 
 
