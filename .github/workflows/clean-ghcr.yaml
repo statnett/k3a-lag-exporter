@@ -9,7 +9,7 @@ permissions:
   contents: read
 jobs:
   trigger:
-    uses: statnett/github-workflows/.github/workflows/clean-ghcr.yaml@main
+    uses: statnett/github-workflows/.github/workflows/clean-ghcr.yaml@041e38de5cf534e88a865c4d9ebdaf71e2ce19ea # main
     secrets: inherit
     permissions:
       packages: write
