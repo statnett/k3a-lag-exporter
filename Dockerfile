@@ -1,4 +1,4 @@
-FROM maven:3-eclipse-temurin-25@sha256:c82963d26ac21d69ba333e28bd22c179cbef22b3561d67744a16342c8c33dc94 AS builder
+FROM maven:3-eclipse-temurin-25@sha256:dc177b22729fae1d45c7b9486aa1dc9077e56123993d85d1cd9fbe9a97a74404 AS builder
 WORKDIR /workspace
 COPY pom.xml pom.xml
 # Tests are run outside docker-build
