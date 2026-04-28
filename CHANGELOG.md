@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.56](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.55...v0.4.56) (2026-04-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.typesafe:config to v1.4.7 ([#478](https://github.com/statnett/k3a-lag-exporter/issues/478)) ([b514784](https://github.com/statnett/k3a-lag-exporter/commit/b514784658a67de4763f016acaa6cd0c56923d38))
+* **deps:** update prometheus.version to v1.6.1 ([#475](https://github.com/statnett/k3a-lag-exporter/issues/475)) ([854bdcb](https://github.com/statnett/k3a-lag-exporter/commit/854bdcb39d66362b60fa0d0459307610124bbafc))
+
 ## [0.4.55](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.54...v0.4.55) (2026-04-27)
 
 
