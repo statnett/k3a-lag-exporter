@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.60](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.59...v0.4.60) (2026-05-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.apache.kafka:kafka-clients to v4.3.0 ([#496](https://github.com/statnett/k3a-lag-exporter/issues/496)) ([ca18365](https://github.com/statnett/k3a-lag-exporter/commit/ca183653c9b97fb5729b475ff6a056bd61b4b340))
+* **deps:** update dependency org.junit:junit-bom to v6.1.0 ([#494](https://github.com/statnett/k3a-lag-exporter/issues/494)) ([41a428e](https://github.com/statnett/k3a-lag-exporter/commit/41a428ed1624d13cd23f230f798a3c3e9ddb2b29))
+
 ## [0.4.59](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.58...v0.4.59) (2026-05-13)
 
 
