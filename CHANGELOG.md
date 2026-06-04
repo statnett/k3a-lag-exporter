@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.63](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.62...v0.4.63) (2026-06-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.typesafe:config to v1.4.9 ([#517](https://github.com/statnett/k3a-lag-exporter/issues/517)) ([a03cd85](https://github.com/statnett/k3a-lag-exporter/commit/a03cd851cff4adce7b0f08659946dc605090bfeb))
+* **deps:** update jackson monorepo to v2.22.0 ([#510](https://github.com/statnett/k3a-lag-exporter/issues/510)) ([f30b6ac](https://github.com/statnett/k3a-lag-exporter/commit/f30b6acb3aa3d02452f5729da394237107d48c36))
+
 ## [0.4.62](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.61...v0.4.62) (2026-06-02)
 
 
