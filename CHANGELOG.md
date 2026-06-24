@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.66](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.65...v0.4.66) (2026-06-24)
+
+
+### Bug Fixes
+
+* **deps:** update kafka.version ([#532](https://github.com/statnett/k3a-lag-exporter/issues/532)) ([8519fa0](https://github.com/statnett/k3a-lag-exporter/commit/8519fa07d732b942c75946a8d53d59c67617f567))
+* **deps:** update logback monorepo ([#531](https://github.com/statnett/k3a-lag-exporter/issues/531)) ([1e3f2ab](https://github.com/statnett/k3a-lag-exporter/commit/1e3f2ab7524da804b7d94a18653e93e8f9c227e8))
+
 ## [0.4.65](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.64...v0.4.65) (2026-06-15)
 
 
