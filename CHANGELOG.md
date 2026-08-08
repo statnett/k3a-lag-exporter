@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.73](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.72...v0.4.73) (2026-08-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency org.junit:junit-bom to v6.1.3 ([#576](https://github.com/statnett/k3a-lag-exporter/issues/576)) ([92250e3](https://github.com/statnett/k3a-lag-exporter/commit/92250e324572bdd77a4c1a07b3ee3317a6207b0e))
+
 ## [0.4.72](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.71...v0.4.72) (2026-08-03)
 
 
