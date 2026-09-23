@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.77](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.76...v0.4.77) (2026-09-23)
+
+
+### Bug Fixes
+
+* **deps:** update dependency com.fasterxml.jackson:jackson-bom to v2.22.3 ([#613](https://github.com/statnett/k3a-lag-exporter/issues/613)) ([8f98588](https://github.com/statnett/k3a-lag-exporter/commit/8f985889d38418e7a57ace1a9d3ab6e88607226d))
+* **deps:** update dependency org.slf4j:slf4j-bom to v2.0.20 ([#615](https://github.com/statnett/k3a-lag-exporter/issues/615)) ([c712884](https://github.com/statnett/k3a-lag-exporter/commit/c712884fa744aef0cc726cc25a2ead95773fe119))
+
 ## [0.4.76](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.75...v0.4.76) (2026-09-17)
 
 
