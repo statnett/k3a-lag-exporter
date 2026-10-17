@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.4.81](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.80...v0.4.81) (2026-10-17)
+
+
+### Bug Fixes
+
+* **deps:** update maven:3-eclipse-temurin-25 docker digest to 9b5f82b ([#633](https://github.com/statnett/k3a-lag-exporter/issues/633)) ([bcfd8ad](https://github.com/statnett/k3a-lag-exporter/commit/bcfd8ad9d8f77448a13157d17abdf3b6f8953557))
+
 ## [0.4.80](https://github.com/statnett/k3a-lag-exporter/compare/v0.4.79...v0.4.80) (2026-10-16)
 
 
